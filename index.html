@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffc3ec">
+<title>SISTAAAA.EXE ♡ Birthday Universe</title>
+<style>
+:root{
+  --pink:#ff50bc;--hot:#ff16a8;--blue:#73e7ff;
+  --lilac:#c7a0ff;--ink:#351746;--paper:#fffaff;
+  --line:#9864bd;--shadow:#613781;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;padding:12px 10px 85px;min-height:100vh;
+  color:var(--ink);font-family:Trebuchet MS,Verdana,sans-serif;
+  background:linear-gradient(-45deg,#ffbce5,#a9eaff,#ddc6ff,#fff0bd,#ffceef);
+  background-size:500% 500%;
+  animation:cosmicBg 12s ease infinite;
+  overflow-x:hidden;
+}
+button{font:inherit;cursor:pointer}
+button:focus-visible{outline:3px solid #351746;outline-offset:4px}
+button:active{transform:scale(.94)}
+.hidden{display:none!important}
+@keyframes cosmicBg{
+  0%,100%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+}
+@keyframes float{
+  0%,100%{transform:translateY(0) rotate(-4deg)}
+  50%{transform:translateY(-13px) rotate(4deg)}
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes reverseSpin{to{transform:rotate(-360deg)}}
+@keyframes pulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.07)}
+}
+@keyframes glow{
+  0%,100%{box-shadow:0 0 8px #ff50bc66,0 0 18px #73e7ff44}
+  50%{box-shadow:0 0 20px #ff50bc,0 0 35px #73e7ff}
+}
+@keyframes entrance{
+  from{opacity:0;transform:translateY(25px) scale(.96)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+@keyframes twinkle{
+  0%,100%{opacity:.2;transform:scale(.5) rotate(0)}
+  50%{opacity:1;transform:scale(1.5) rotate(40deg)}
+}
+@keyframes glitch{
+  0%,91%,100%{text-shadow:2px 2px var(--blue),-2px -2px var(--pink)}
+  93%{text-shadow:-5px 0 var(--blue),5px 0 var(--pink)}
+  96%{text-shadow:4px -3px var(--blue),-4px 3px var(--pink)}
+}
+@keyframes rainbow{to{filter:hue-rotate(360deg)}}
+@keyframes marquee{to{transform:translateX(-50%)}}
+@keyframes blink{50%{opacity:0}}
+@keyframes driftUp{
+  from{transform:translateY(110vh) rotate(0);opacity:0}
+  10%,85%{opacity:1}
+  to{transform:translateY(-15vh) rotate(300deg);opacity:0}
+}
+@keyframes fall{
+  to{transform:translateY(110vh) rotate(800deg);opacity:.8}
+}
+@keyframes pop{
+  0%{transform:scale(.2);opacity:0}
+  35%{transform:scale(1.5);opacity:1}
+  100%{transform:translateY(-65px) scale(.8);opacity:0}
+}
+@keyframes scan{to{background-position:0 8px}}
+@keyframes shimmer{
+  from{background-position:200% center}
+  to{background-position:-200% center}
+}
+@keyframes wiggle{
+  0%,100%{rotate:0deg}
+  25%{rotate:-4deg}
+  75%{rotate:4deg}
+}
+@keyframes orbit{to{transform:rotate(360deg)}}
+
+  @keyframes orbit{to{transform:rotate(360deg)}}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+@keyframes borderDance{to{border-color:#73e7ff}}
+#universe{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+#sparkles,#floaties,#confetti{position:absolute;inset:0;overflow:hidden}
+.spark{position:absolute;color:white;text-shadow:0 0 10px #ff16a8;animation:twinkle var(--t) ease-in-out infinite}
+.floaty{position:absolute;bottom:-12vh;left:var(--x);font-size:var(--s);animation:driftUp var(--d) linear infinite;animation-delay:var(--delay);filter:drop-shadow(0 0 6px #ff50bc)}
+.piece{position:absolute;top:-15px;left:var(--x);width:var(--s);height:calc(var(--s)*1.5);background:var(--c);animation:fall var(--d) linear forwards}
+.desktop{position:relative;z-index:1;max-width:850px;margin:auto}
+.topbar,.taskbar{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:10px 12px;background:linear-gradient(100deg,#ff9bdb,#bcefff,#e8d4ff);border:2px solid var(--line);box-shadow:3px 4px 0 var(--shadow);font-size:11px;font-weight:bold}
+.topbar{border-radius:10px}
+.window{margin-top:15px;overflow:hidden;background:#fffaffef;border:2px solid var(--line);border-radius:10px;box-shadow:5px 6px 0 var(--shadow),0 0 22px #fff9;animation:entrance .55s both}
+.titlebar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px;background:linear-gradient(90deg,#ff98d8,#b7eaff,#dfcbff);border-bottom:2px solid var(--line);font-size:11px;font-weight:bold;overflow-wrap:anywhere}
+.content{padding:15px}
+.boot{min-height:74vh;display:flex;align-items:center;justify-content:center;padding:16px 0}
+.bootbox{width:100%;max-width:470px;text-align:center;padding:24px 17px;background:var(--paper);border:3px ridge var(--lilac);border-radius:16px;box-shadow:0 0 25px var(--pink),6px 7px 0 var(--shadow);animation:glow 3s infinite}
+.bootlogo{display:inline-block;font-size:68px;filter:drop-shadow(0 0 12px var(--pink));animation:spin 9s linear infinite}
+.kicker{font-size:10px;letter-spacing:2px;font-weight:bold}
+h1{font-size:clamp(30px,8vw,49px);line-height:1.1;color:#bd258e;text-shadow:2px 2px var(--blue),4px 4px var(--lilac);animation:glitch 5s steps(1) infinite}
+h2{font-size:clamp(20px,5vw,28px);line-height:1.2;margin:0 0 12px}
+h3{margin:0 0 8px}
+p{line-height:1.65}
+.small{font-size:12px}
+.muted{color:#705c82}
+.progress{height:14px;padding:2px;max-width:290px;margin:17px auto;border:2px solid var(--line);border-radius:4px}
+.progress span{display:block;width:100%;height:100%;background:repeating-linear-gradient(90deg,#ff63c7 0 12px,#8ce6ff 12px 24px);animation:shimmer 2s linear infinite;background-size:200% 100%}
+.btn,.taskbtn{border:2px solid #71499b;border-radius:8px;padding:11px 14px;font-weight:bold;color:var(--ink);background:linear-gradient(#fff,#ffc7e9);box-shadow:3px 3px 0 #71499b;transition:filter .2s,box-shadow .2s}
+.btn:hover,.taskbtn:hover{filter:saturate(1.5);animation:wiggle .3s}
+.btn.pink{animation:glow 2s infinite}
+.btn.blue{background:linear-gradient(#fff,#bcefff)}
+.btn.purple{background:linear-gradient(#fff,#e0ccff)}
+.wide{width:100%;max-width:300px}
+.stickerrow{display:flex;align-items:center;justify-content:center;gap:13px;flex-wrap:wrap;margin:15px 0;font-size:25px}
+.stickerrow span{display:inline-block;animation:float 3s ease-in-out infinite}
+.stickerrow span:nth-child(even){animation-delay:-1.3s}
+.hero{text-align:center;position:relative;overflow:hidden;padding:20px 10px;background:linear-gradient(135deg,#ffe0f4,#d9f6ff,#eee0ff);border:2px dashed #b47ccc;border-radius:13px}
+.heroemoji{font-size:35px;letter-spacing:4px;animation:float 3s infinite}
+.hero h2{margin:12px 0;color:#b32b8b}
+.badge{display:inline-block;margin:3px;padding:5px 8px;border:1px solid #a16abb;border-radius:5px;background:#fff;font-size:10px;font-weight:bold}
+.typeline{min-height:25px;font-weight:bold}
+.cursor{animation:blink .7s steps(1) infinite}
+.movingline{overflow:hidden;white-space:nowrap;border-block:1px dashed #b184cb;padding:8px 0;margin:13px 0;background:#fff2fb}
+.movingline span{display:inline-block;min-width:200%;font-size:12px;font-weight:bold;animation:marquee 18s linear infinite}
+.gridicons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:16px 0}
+.iconbtn{min-width:0;min-height:100px;padding:9px 3px;border:1px solid #c8a2e1;border-radius:10px;background:linear-gradient(#fff,#fae5ff);color:var(--ink);font-size:10px;font-weight:bold;box-shadow:2px 3px 0 #ddc3ed;transition:transform .2s,box-shadow .2s}
+.iconbtn:hover{transform:translateY(-5px) rotate(-2deg);box-shadow:4px 7px 0 #ddc3ed}
+.iconbtn span{display:block;font-size:28px;margin-bottom:8px;animation:bounce 3s infinite}
+.iconbtn:nth-child(2n) span{animation-delay:-1s}
+.iconbtn:nth-child(3n) span{animation-delay:-2s}
+.statusbox{padding:11px;border:1px dashed #b184cb;background:#fff0fa;border-radius:8px;font-size:12px}
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.photo{min-width:0;padding:7px;background:white;border:1px solid #caa9de;box-shadow:3px 4px 0 #d3b8e5;transform:rotate(-1deg);animation:entrance .6s both;transition:transform .25s}
+.photo:nth-child(even){transform:rotate(1.5deg);animation-delay:.12s}
+.photo:hover{transform:translateY(-5px) rotate(0) scale(1.03)}
+.photo-img{display:block;width:100%;height:150px;object-fit:cover;cursor:zoom-in;background:linear-gradient(135deg,#ffe0f2,#d8f4ff)}
+.placeholder{min-height:110px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:8px;background:linear-gradient(140deg,#ffe4f5,#d1f4ff);color:#72528f}
+.placeholder strong{font-size:31px;animation:float 3s infinite}
+.caption{text-align:center;padding:8px 3px 3px;font-size:11px;font-weight:bold;overflow-wrap:anywhere}
+.caption small{display:block;margin-top:4px;color:#776187;font-weight:normal}
+.letter{padding:16px;background:repeating-linear-gradient(#fffaff 0 29px,#f1dff2 30px 31px);border:1px solid #d5b6e7;border-radius:7px}
+.letter p{margin:0 0 15px}
+.signoff{font-weight:bold;color:#b32b8b}
+.wish{min-height:110px;display:flex;align-items:center;justify-content:center;padding:16px;text-align:center;border:2px dashed #b184cb;background:linear-gradient(135deg,#ffebf8,#e7f8ff);border-radius:10px;font-weight:bold;font-size:15px}
+.secret{text-align:center;padding:15px;border:2px dashed #c78bd7;border-radius:10px;background:#fff0fb}
+.bigsecret{font-size:48px;animation:pulse 1.8s infinite}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.stat{padding:15px 8px;text-align:center;background:linear-gradient(135deg,#ffe3f5,#e3f7ff);border:1px solid #d1a3e6;border-radius:10px;animation:glow 4s infinite}
+.stat strong{display:block;font-size:23px;color:#b32b8b}
+.heartarea{text-align:center;padding:15px}
+.heart-button{width:65px;height:65px;margin:7px;font-size:30px;border:2px solid #ca80bd;border-radius:50%;background:#fff2fa;animation:pulse 1.5s infinite;box-shadow:0 0 15px #ff50bc55}
+#heartCount{font-size:27px;color:#b32b8b;font-weight:bold}
+.footer{text-align:center;font-size:11px;color:#5d4774;padding:22px 6px}
+.taskbar{position:fixed;bottom:0;left:0;right:0;z-index:5;flex-wrap:nowrap;border-width:2px 0 0;border-radius:0;box-shadow:0 -3px 14px #fff8;padding:9px 12px}
+.taskbar .taskbtn{padding:7px 9px;font-size:11px}
+.toast{position:fixed;z-index:12;left:50%;bottom:70px;transform:translateX(-50%);width:max-content;max-width:90%;padding:11px 14px;border:2px solid var(--line);border-radius:8px;background:#fffaff;box-shadow:3px 4px 0 var(--shadow);text-align:center;font-size:12px;animation:entrance .25s both}
+.sparkburst{position:fixed;z-index:14;pointer-events:none;font-size:24px;animation:pop .9s ease-out forwards}
+.scanlines{pointer-events:none;position:fixed;z-index:9;inset:0;opacity:.055;background:repeating-linear-gradient(0deg,transparent 0 3px,#655077 4px,#655077 5px);animation:scan .5s linear infinite}
+#lightbox{position:fixed;inset:0;z-index:20;background:#170c26ee;display:flex;align-items:center;justify-content:center;padding:18px}
+#lightbox img{max-width:100%;max-height:80vh;object-fit:contain;border:4px solid white;box-shadow:0 0 30px var(--pink)}
+#lightbox button{position:absolute;right:16px;top:18px}
+@media(max-width:390px){
+ body{padding:7px 6px 78px}.content{padding:11px}
+ .gridicons{gap:6px}.iconbtn{min-height:88px;font-size:9px}
+ .iconbtn span{font-size:25px}.photo-img{height:120px}
+ .gallery{gap:9px}.taskbar{padding:7px}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<div id="universe"><div id="sparkles"></div><div id="floaties"></div><div id="confetti"></div></div>
+<div class="scanlines"></div>
+
+<div class="desktop">
+  <div class="topbar">
+    <span>✿ SISTAAAA.EXE</span><span>BIRTHDAY UNIVERSE · v. 3.0</span><span>♡ ONLINE ♡</span>
+  </div>
+
+  <section id="boot" class="boot">
+    <div class="bootbox">
+      <div class="bootlogo">💿</div>
+      <p class="kicker">BESTIE OPERATING SYSTEM PRESENTS</p>
+      <h1>SISTAAAA.EXE</h1>
+      <p>Installing birthday magic for<br><strong>RELEBOHILE</strong> ♡</p>
+      <div class="progress"><span></span></div>
+      <p class="small">FRIENDSHIP: CONNECTED<br>ICON STATUS: LEGENDARY</p>
+      <button class="btn pink wide" id="enterBtn" type="button">▶ ENTER THE CHAOS</button>
+      <p class="small muted">Warning: unreasonable amounts of love detected.</p>
+      <div class="stickerrow"><span>🎀</span><span>🦋</span><span>⭐</span><span>💗</span><span>🪩</span></div>
+    </div>
+  </section>
+
+  <main id="home" class="hidden">
+    <section class="window">
+      <div class="titlebar"><span>★ DESKTOP / WELCOME.EXE</span><span>_ □ ×</span></div>
+      <div class="content">
+        <div class="hero">
+          <div class="heroemoji">🎀 💿 🦋</div>
+          <span class="badge">TODAY'S MAIN CHARACTER</span>
+          <h2>HAPPY BIRTHDAY,<br>RELEBOHILE!!</h2>
+          <p class="typeline"><span id="typed"></span><span class="cursor">▌</span></p>
+          <p>Your birthday era has officially begun.</p>
+          <span class="badge">LOVE FROM YOUR SISTAAAA ♡</span>
+        </div>
+        <div class="movingline"><span>✧ BIRTHDAY GIRL DETECTED ✧ ICON ALERT ✧ HAPPY BIRTHDAY SISTAAAA ✧ ✧ BIRTHDAY GIRL DETECTED ✧ ICON ALERT ✧ HAPPY BIRTHDAY SISTAAAA ✧</span></div>
+        <p class="small muted" style="text-align:center">TAP AN ICON TO EXPLORE YOUR BIRTHDAY UNIVERSE ↓</p>
+        <div class="gridicons">
+          <button class="iconbtn" data-open="photos"><span>📸</span>PHOTO VAULT</button>
+          <button class="iconbtn" data-open="letter"><span>💌</span>LOVE LETTER</button>
+          <button class="iconbtn" data-open="wishes"><span>✨</span>WISH MACHINE</button>
+          <button class="iconbtn" data-open="secret"><span>🔒</span>SECRET FILE</button>
+          <button class="iconbtn" data-open="facts"><span>🦋</span>BESTIE STATS</button>
+          <button class="iconbtn" data-open="hearts"><span>💗</span>SEND HEARTS</button>
+        </div>
+        <div class="statusbox" id="status"><strong>◉ SYSTEM MESSAGE:</strong> Birthday girl detected. Compliments loading… 100% 💗</div>
+        <div class="stickerrow"><span>🌟</span><span>🫧</span><span>🩷</span><span>🪩</span><span>🌈</span></div>
+      </div>
+    </section>
+
+    <section id="photos" class="window hidden">
+      <div class="titlebar"><span>📸 /PHOTO_VAULT</span><button class="taskbtn" data-close="photos">✕ CLOSE</button></div>
+      <div class="content">
+        <h2>THE RELEBOHILE GALLERY ✨</h2>
+        <p class="small muted">Eight little frames for eight iconic moments. We'll add the photos after the site works.</p>
+        <div class="gallery">
+          <div class="photo"><div class="placeholder"><strong>📷</strong><span>PHOTO 01</span></div><img class="photo-img hidden" src="" alt="Relebohile photo 1"><div class="caption">THE ICON ♡<small>zero competition</small></div></div>
+          <div class="photo"><div class="placeholder"><strong>🦋</strong><span>PHOTO 02</span></div><img class="photo-img hidden" src="" alt="Relebohile photo 2"><div class="caption">SISTAAAAA!!<small>my favourite human</small></div></div>
+          <div class="photo"><div class="placeholder"><strong>💿</strong><span>PHOTO 03</span></div><img class="photo-img hidden" src="" alt="Relebohile photo 3"><div class="caption">NO SKIPS ✧<small>certified classic</small></div></div>
+          <div class="photo"><div class="placeholder"><strong>⭐</strong><span>PHOTO 04</span></div><img class="photo-img hidden" src="" alt="Relebohile photo 4"><div class="caption">THE MOMENT<small>main-character energy</small></div></div>
+          <div class="photo"><div class="placeholder"><strong>🎀</strong><span>PHOTO 05</span></div><img class="photo-img hidden" src="" alt="Relebohile photo 5"><div class="caption">PRETTY IN EVERY FRAME<small>literally iconic</small></div></div>
+          <div class="photo"><div class="placeholder"><strong>🌈</strong><span>PHOTO 06</span></div><img class="photo-img hidden" src="" alt="Relebohile photo 6"><div class="caption">THE VIBE ✧<small>never boring</small></div></div>
+          <div class="photo"><div class="placeholder"><strong>💗</strong><span>PHOTO 07</span></div><img class="photo-img hidden" src="" alt="Relebohile photo 7"><div class="caption">ONE OF ONE ♡<small>no one else like you</small></div></div>
+          <div class="photo"><div class="placeholder"><strong>🪩</strong><span>PHOTO 08</span></div><img class="photo-img hidden" src="" alt="Relebohile photo 8"><div class="caption">BIRTHDAY LEGEND<small>forever celebrated</small></div></div>
+        </div>
+        <p class="statusbox">♡ Every picture can open full-size when we add its image link.</p>
+      </div>
+    </section>
+
+    <section id="letter" class="window hidden">
+      <div class="titlebar"><span>💌 /LETTER_FOR_SISTAAAA.txt</span><button class="taskbtn" data-close="letter">✕ CLOSE</button></div>
+      <div class="content"><div class="letter">
+        <p><strong>TO MY SISTAAAA, RELEBOHILE ♡</strong></p>
+        <p>HAPPIEST BIRTHDAY, SISTAAAA!! 😭💗</p>
+        <p>Imagine that we met so randomly on Instagram, and now, almost a year later, you're someone I get to call my family. HOW IS THAT EVEN REAL?!</p>
+        <p>I genuinely feel like the luckiest girl on earth to have you as my sistaa and bestiee. Somewhere along the way, you became a place of comfort for me. When things at home felt chaotic, I found a sense of home in you, and that means more to me than I can properly explain.</p>
+        <p>For your new year of life, I wish you ALL the luck and blessings in the world. I hope beautiful things find their way to you, that your dreams get room to grow, that you have so many reasons to smile, and that life gives you the happiness and love you deserve.</p>
+        <p>Today is YOUR day, so please go be iconic, enjoy yourself, and let the world celebrate you. YOU ARE THE MAIN CHARACTER. NO ARGUMENTS. 🎀</p>
+        <p>I'm so glad our paths crossed, Sistaaaa. I'm so grateful you're my bestie and my family. ♡</p>
+        <p class="signoff">ALL MY LOVE,<br>YOUR SISTAAAA 🫶</p>
+        <p class="small muted">P.S. You are legally required to have the most iconic birthday ever. I don't make the rules. 💿</p>
+      </div><p class="small muted">This letter is yours to edit. Make every word sound like you.</p></div>
+    </section>
+
+    <section id="wishes" class="window hidden">
+      <div class="titlebar"><span>✨ WISH_GENERATOR.exe</span><button class="taskbtn" data-close="wishes">✕ CLOSE</button></div>
+      <div class="content">
+        <h2>YOUR PERSONAL WISH MACHINE 🌠</h2>
+        <p>Generate a little wish for the year ahead.</p>
+        <div class="wish" id="wish">May your year be filled with luck, love, and blessings you never even knew to ask for. ♡</div>
+        <p style="text-align:center"><button class="btn purple pink" id="wishBtn">✧ ANOTHER WISH ✧</button></p>
+        <div class="stickerrow"><span>🍀</span><span>🌠</span><span>🦋</span><span>💎</span></div>
+      </div>
+    </section>
+
+        <section id="secret" class="window hidden">
+      <div class="titlebar"><span>🔒 /CLASSIFIED/SISTAAAA.dat</span><button class="taskbtn" data-close="secret">✕ CLOSE</button></div>
+      <div class="content">
+        <div class="secret">
+          <div class="bigsecret" id="secretIcon">🔐</div>
+          <h2>TOP SECRET: FOR RELEBOHILE ONLY</h2>
+          <p>You've discovered a classified file from the Department of Bestie Affairs.</p>
+          <button class="btn pink" id="secretBtn">♡ UNLOCK YOUR FILE ♡</button>
+          <div id="secretMessage" class="hidden">
+            <div class="stickerrow"><span>💗</span><span>🦋</span><span>🌷</span><span>💗</span></div>
+            <h2>YOU ARE REAL FAMILY. ♡</h2>
+            <p>Out of all the random ways two people could meet, somehow our paths crossed. And I'm so glad they did, Sistaaaa.</p>
+            <p>You have a place in my world that is completely your own. Today, the birthday universe is officially reminding you how loved and celebrated you are!</p>
+            <p><strong>YOUR OFFICIAL STATUS: UNREPLACEABLE BESTIE.</strong></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="facts" class="window hidden">
+      <div class="titlebar"><span>🦋 /SYSTEM/STATS.exe</span><button class="taskbtn" data-close="facts">✕ CLOSE</button></div>
+      <div class="content">
+        <h2>THE SISTAAAA STATISTICS 📊</h2>
+        <p>Absolutely scientific. Definitely peer-reviewed by the Council of Besties.</p>
+        <div class="stats">
+          <div class="stat"><strong>∞</strong>Love sent your way</div>
+          <div class="stat"><strong>100%</strong>Main character</div>
+          <div class="stat"><strong>LEGEND</strong>Official status</div>
+          <div class="stat"><strong>1 of 1</strong>There's only you</div>
+          <div class="stat"><strong>MAX</strong>Birthday sparkle</div>
+          <div class="stat"><strong>∞/10</strong>Bestie rating</div>
+        </div>
+        <div class="stickerrow"><span>🪩</span><span>🌈</span><span>⭐</span><span>🫧</span></div>
+        <div class="statusbox">SYSTEM VERDICT: an extraordinarily important human has entered another year of being iconic. ♡</div>
+      </div>
+    </section>
+
+    <section id="hearts" class="window hidden">
+      <div class="titlebar"><span>💗 /HEART_SERVER/LOVE.exe</span><button class="taskbtn" data-close="hearts">✕ CLOSE</button></div>
+      <div class="content">
+        <div class="heartarea">
+          <div style="font-size:48px;animation:float 2.5s infinite">💌</div>
+          <h2>INFINITE HEART DELIVERY</h2>
+          <p>Tap the heart. Launch a tiny explosion of love into the birthday universe!</p>
+          <button class="heart-button" id="heartBtn" aria-label="Send a heart">💗</button>
+          <p>HEARTS SENT</p>
+          <div id="heartCount">000</div>
+          <p class="small muted">Warning: the delivery limit has been removed permanently.</p>
+          <button class="btn blue" id="heartParty">🎉 INITIATE HEART STORM</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="footer">
+    MADE WITH LOVE, SPARKLES & AN EXTREMELY QUESTIONABLE AMOUNT OF CSS ♡
+    <div class="stickerrow"><span>🎀</span><span>💿</span><span>🦋</span><span>💗</span><span>✨</span></div>
+    END OF FILE · BUT NEVER THE END OF THE LOVE
+  </div>
+</div>
+
+<div class="taskbar">
+  <span>✿ SISTAAAA.EXE</span>
+  <button class="taskbtn" id="homeBtn">⌂ HOME</button>
+  <button class="taskbtn" id="partyBtn">✧ PARTY!</button>
+  <span id="clock">♡ ONLINE</span>
+</div>
+
+<div id="toast" class="toast hidden" role="status"></div>
+
+<div id="lightbox" class="hidden">
+  <button class="taskbtn" id="lightboxClose">✕ CLOSE</button>
+  <img id="lightboxImage" src="" alt="Expanded birthday photo">
+</div>
+
+<script>
+(function(){
+"use strict";
+
+const $ = id => document.getElementById(id);
+const all = selector => document.querySelectorAll(selector);
+
+let hearts = 0;
+let toastTimer;
+let typingTimer;
+let sparkleTimer;
+let partyTimer;
+
+const wishes = [
+  "May luck find you in every place your dreams take you. 🍀",
+  "May this year bring beautiful surprises you never saw coming. 🌷",
+  "May your dreams grow bigger and your reasons to smile multiply. ✨",
+  "May you always find people who celebrate the real you. 💗",
+  "May every new chapter bring kindness, courage, laughter and love. 🦋",
+  "May blessings find their way to you in the most unexpected ways. 🌠",
+  "May you have the confidence to chase the life you dream about. 💎",
+  "May this year be full of moments you wish you could replay forever. 🎀",
+  "May happiness meet you in ordinary little moments, too. ☁️",
+  "May you always remember how precious and irreplaceable you are. 💗",
+  "May your next trip around the sun be full of magic and possibility. ☀️",
+  "May the world surprise you with more goodness than you expected. 🌈"
+];
+
+function toast(message){
+  const box = $("toast");
+  if(!box) return;
+  box.textContent = message;
+  box.classList.remove("hidden");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => box.classList.add("hidden"),2600);
+}
+
+function burst(x,y,amount){
+  const icons = ["💗","✨","♡","⭐","🦋","🎀","🌸","💿","🫧"];
+  for(let i=0;i<amount;i++){
+    const item = document.createElement("span");
+    item.className = "sparkburst";
+    item.textContent = icons[Math.floor(Math.random()*icons.length)];
+    item.style.left = (x+(Math.random()-.5)*140)+"px";
+    item.style.top = (y+(Math.random()-.5)*100)+"px";
+    item.style.animationDelay = (Math.random()*.25)+"s";
+    document.body.appendChild(item);
+    setTimeout(() => item.remove(),1300);
+  }
+}
+
+function confetti(amount){
+  const layer = $("confetti");
+  if(!layer) return;
+  const colors = ["#ff50bc","#73e7ff","#c7a0ff","#ffe16b","#ff9dbd","#ffffff"];
+  for(let i=0;i<amount;i++){
+    const piece = document.createElement("i");
+    piece.className = "piece";
+    piece.style.setProperty("--x",Math.random()*100+"%");
+    piece.style.setProperty("--s",(5+Math.random()*8)+"px");
+    piece.style.setProperty("--c",colors[Math.floor(Math.random()*colors.length)]);
+    piece.style.setProperty("--d",(2.8+Math.random()*3.5)+"s");
+    piece.style.animationDelay=(Math.random()*.9)+"s";
+    layer.appendChild(piece);
+    setTimeout(()=>piece.remove(),7500);
+  }
+}
+
+function startTyping(){
+  const el = $("typed");
+  if(!el) return;
+  clearInterval(typingTimer);
+  const message = "A WHOLE UNIVERSE, JUST FOR YOU ♡";
+  let index=0;
+  el.textContent="";
+  typingTimer=setInterval(()=>{
+    el.textContent+=message.charAt(index++);
+    if(index>=message.length) clearInterval(typingTimer);
+  },75);
+}
+
+function openHome(){
+  $("boot").classList.add("hidden");
+  $("home").classList.remove("hidden");
+  all("main .window").forEach(section=>section.classList.add("hidden"));
+  window.scrollTo({top:0,behavior:"smooth"});
+  startTyping();
+}
+
+function showSection(id){
+  const section=$(id);
+  if(!section) return;
+  all("main .window").forEach(item=>item.classList.add("hidden"));
+  section.classList.remove("hidden");
+  section.scrollIntoView({behavior:"smooth",block:"start"});
+  const names={
+    photos:"PHOTO VAULT OPENED 📸",
+    letter:"A LITTLE LETTER JUST FOR HER 💌",
+    wishes:"WISH GENERATOR ACTIVATED ✨",
+    secret:"CLASSIFIED BESTIE FILE 🔐",
+    facts:"SCIENTIFIC BESTIE STATISTICS 🦋",
+    hearts:"HEART DELIVERY SERVER ONLINE 💗"
+  };
+  toast(names[id]||"WELCOME!");
+  burst(window.innerWidth/2,100,9);
+}
+
+function makeSparkles(){
+  const layer=$("sparkles");
+  const icons=["✦","✧","⋆","·","✺","♡","✩"];
+  for(let i=0;i<38;i++){
+    const star=document.createElement("span");
+    star.className="spark";
+    star.textContent=icons[Math.floor(Math.random()*icons.length)];
+    star.style.left=Math.random()*100+"%";
+    star.style.top=Math.random()*100+"%";
+    star.style.setProperty("--t",(1.5+Math.random()*3.5)+"s");
+    star.style.animationDelay=(-Math.random()*5)+"s";
+    star.style.fontSize=(8+Math.random()*15)+"px";
+    layer.appendChild(star);
+  }
+}
+
+function makeFloaties(){
+  const layer=$("floaties");
+  const icons=["♡","💗","✨","🦋","🎀","⭐","🫧","🌸","💿"];
+  for(let i=0;i<20;i++){
+    const item=document.createElement("span");
+    item.className="floaty";
+    item.textContent=icons[Math.floor(Math.random()*icons.length)];
+    item.style.setProperty("--x",Math.random()*100+"%");
+    item.style.setProperty("--s",(14+Math.random()*23)+"px");
+    item.style.setProperty("--d",(9+Math.random()*15)+"s");
+    item.style.setProperty("--delay",(-Math.random()*22)+"s");
+    layer.appendChild(item);
+  }
+}
+
+function updateClock(){
+  const clock=$("clock");
+  if(!clock)return;
+  clock.textContent="♡ "+new Date().toLocaleTimeString([],{
+    hour:"2-digit",minute:"2-digit"
+  });
+}
+
+$("enterBtn").addEventListener("click",function(){
+  openHome();
+  confetti(115);
+  burst(window.innerWidth/2,window.innerHeight/2,35);
+  toast("WELCOME TO YOUR BIRTHDAY UNIVERSE, SISTAAAA!! 💗");
+});
+
+all("[data-open]").forEach(button=>{
+  button.addEventListener("click",()=>{
+    showSection(button.getAttribute("data-open"));
+  });
+});
+
+all("[data-close]").forEach(button=>{
+  button.addEventListener("click",()=>{
+    const section=$(button.getAttribute("data-close"));
+    if(section)section.classList.add("hidden");
+    window.scrollTo({top:0,behavior:"smooth"});
+    toast("BACK TO YOUR DESKTOP ♡");
+  });
+});
+
+$("homeBtn").addEventListener("click",()=>{
+  if(!$("home").classList.contains("hidden")){
+    all("main .window").forEach(item=>item.classList.add("hidden"));
+    window.scrollTo({top:0,behavior:"smooth"});
+  }else{
+    openHome();
+  }
+});
+
+$("wishBtn").addEventListener("click",()=>{
+  const display=$("wish");
+  let next=wishes[Math.floor(Math.random()*wishes.length)];
+  if(wishes.length>1 && next===display.textContent){
+    next=wishes[(wishes.indexOf(next)+1)%wishes.length];
+  }
+  display.animate([
+    {opacity:1,transform:"scale(1) rotate(0deg)"},
+    {opacity:0,transform:"scale(.85) rotate(-2deg)"},
+    {opacity:1,transform:"scale(1) rotate(0deg)"}
+  ],{duration:500,easing:"ease-in-out"});
+  display.textContent=next;
+  burst(window.innerWidth/2,window.innerHeight/2,12);
+});
+
+$("secretBtn").addEventListener("click",()=>{
+  const message=$("secretMessage");
+  const opening=message.classList.contains("hidden");
+  message.classList.toggle("hidden");
+  $("secretIcon").textContent=opening?"🔓":"🔐";
+  $("secretBtn").textContent=opening?"♡ LOCK THE FILE ♡":"♡ UNLOCK YOUR FILE ♡";
+  if(opening){
+    confetti(55);
+    burst(window.innerWidth/2,window.innerHeight/2,25);
+    toast("SECRET REVEALED! YOU ARE SO LOVED 💗");
+  }
+});
+
+function sendHeart(){
+  hearts++;
+  $("heartCount").textContent=String(hearts).padStart(3,"0");
+  burst(Math.random()*window.innerWidth,window.innerHeight*.45,8);
+  if(hearts===1)toast("FIRST HEART DELIVERED! 💗");
+  else if(hearts%10===0)toast(hearts+" HEARTS?! THE LOVE IS UNREAL 💗");
+  else if(hearts%5===0)toast("HEART DELIVERY STREAK! ✨");
+}
+
+$("heartBtn").addEventListener("click",sendHeart);
+
+$("heartParty").addEventListener("click",()=>{
+  confetti(100);
+  for(let i=0;i<6;i++){
+    setTimeout(()=>burst(
+      Math.random()*window.innerWidth,
+      Math.random()*window.innerHeight*.65,
+      15
+    ),i*180);
+  }
+  toast("HEART STORM ACTIVATED! 💗🌠");
+});
+
+$("partyBtn").addEventListener("click",()=>{
+  confetti(100);
+  for(let i=0;i<5;i++){
+    setTimeout(()=>burst(
+      Math.random()*window.innerWidth,
+      Math.random()*window.innerHeight*.7,
+      15
+    ),i*180);
+  }
+  toast("BIRTHDAY PARTY MODE ACTIVATED 🎉");
+});
+
+all(".photo").forEach(card=>{
+  const img=card.querySelector(".photo-img");
+  const placeholder=card.querySelector(".placeholder");
+  if(!img)return;
+
+  function revealImage(){
+    if(img.getAttribute("src") && img.getAttribute("src")!==""){
+      img.classList.remove("hidden");
+      if(placeholder)placeholder.classList.add("hidden");
+    }else{
+      img.classList.add("hidden");
+      if(placeholder)placeholder.classList.remove("hidden");
+    }
+  }
+
+  img.addEventListener("load",()=>{
+    img.classList.remove("hidden");
+    if(placeholder)placeholder.classList.add("hidden");
+  });
+
+  img.addEventListener("error",()=>{
+    img.classList.add("hidden");
+    if(placeholder)placeholder.classList.remove("hidden");
+  });
+
+  revealImage();
+
+  img.addEventListener("click",()=>{
+    if(img.classList.contains("hidden"))return;
+    $("lightboxImage").src=img.src;
+    $("lightbox").classList.remove("hidden");
+  });
+});
+
+function closeLightbox(){
+  $("lightbox").classList.add("hidden");
+  $("lightboxImage").src="";
+}
+
+$("lightboxClose").addEventListener("click",closeLightbox);
+$("lightbox").addEventListener("click",event=>{
+  if(event.target===$("lightbox"))closeLightbox();
+});
+
+document.addEventListener("keydown",event=>{
+  if(event.key==="Escape")closeLightbox();
+});
+
+document.addEventListener("click",event=>{
+  if(event.target.closest("button") && !$("boot").classList.contains("hidden")){
+    return;
+  }
+  if(event.target.closest("button"))return;
+  burst(event.clientX,event.clientY,4);
+});
+
+makeSparkles();
+makeFloaties();
+updateClock();
+setInterval(updateClock,30000);
+
+})();
+</script>
+</body>
+            </html>
