@@ -4547,12 +4547,13 @@ function resultPanel(symbol, title, text, buttonLabel, callback) {
    GAME 001: STAR CATCHER
    ============================================================ */
 
+            
 function startStarCatcher() {
   setGameContent("STAR CATCHER / REFLEX TEST", `
     <div class="game-screen">
       <p class="game-intro">
         Catch as many stars as you can in twenty seconds.
-        Tap the glowing star whenever it appears.
+        Tap each glowing star before it disappears.
       </p>
 
       <div class="game-hud">
@@ -4561,7 +4562,9 @@ function startStarCatcher() {
         <span>RECORD: <strong id="star-best">0</strong></span>
       </div>
 
-      <div class="game-play-area" id="star-arena" aria-label="Star catching game area">
+      <div class="game-play-area"
+           id="star-arena"
+           aria-label="Star catching game area">
         <div class="game-big-symbol" aria-hidden="true">✦</div>
       </div>
 
@@ -4570,11 +4573,15 @@ function startStarCatcher() {
       </div>
 
       <div class="game-controls">
-        <button class="btn btn-primary" id="star-start" type="button">START GAME ↗</button>
+        <button class="btn btn-primary"
+                id="star-start"
+                type="button">
+          START GAME ↗
+        </button>
       </div>
 
       <p class="small-label" style="margin-top:15px">
-        TIP: EACH STAR COUNTS. MISSED STARS DON'T.
+        TIP: EACH CAUGHT STAR COUNTS.
       </p>
     </div>
   `);
@@ -4588,70 +4595,155 @@ function startStarCatcher() {
 
   let score = 0;
   let timeLeft = 20;
-  let bestScore = 0;
-  let hasStarted = false;
-  let spawnTimer = null;
-  let clockTimer = null;
   let running = false;
 
-  const stopTimers = () => {
-    if (spawnTimer !== null) window.clearInterval(spawnTimer);
-    if (clockTimer !== null) window.clearInterval(clockTimer);
-    spawnTimer = null;
-    clockTimer = null;
-  };
+  let nextStarTimer = null;
+  let starExpiryTimer = null;
+  let clockTimer = null;
+
+  function clearGameTimers() {
+    if (nextStarTimer !== null) {
+      clearTimeout(nextStarTimer);
+      nextStarTimer = null;
+    }
+
+    if (starExpiryTimer !== null) {
+      clearTimeout(starExpiryTimer);
+      starExpiryTimer = null;
+    }
+
+    if (clockTimer !== null) {
+      clearInterval(clockTimer);
+      clockTimer = null;
+    }
+  }
 
   activeGameCleanup = () => {
     running = false;
-    stopTimers();
+    clearGameTimers();
+    arena?.querySelector(".star-target")?.remove();
   };
+
+  function scheduleNextStar(delay = 160) {
+    if (!running) return;
+
+    if (nextStarTimer !== null) {
+      clearTimeout(nextStarTimer);
+    }
+
+    nextStarTimer = setTimeout(() => {
+      nextStarTimer = null;
+      spawnStar();
+    }, delay);
+  }
+
+  function catchStar(event, star, wasCaught) {
+    if (!running || wasCaught.value || !star.isConnected) {
+      return;
+    }
+
+    event.preventDefault();
+    wasCaught.value = true;
+
+    if (starExpiryTimer !== null) {
+      clearTimeout(starExpiryTimer);
+      starExpiryTimer = null;
+    }
+
+    star.remove();
+
+    score++;
+    appState.starsCaught++;
+
+    if (scoreLabel) {
+      scoreLabel.textContent = String(score);
+    }
+
+    const oldRecord = Number(appState.starCatcherBest || 0);
+
+    if (score > oldRecord) {
+      appState.starCatcherBest = score;
+    }
+
+    if (bestLabel) {
+      bestLabel.textContent = String(
+        appState.starCatcherBest || 0
+      );
+    }
+
+    updateDiscoveryDashboard();
+
+    if (score >= 10) {
+      unlockAchievement("star-winner");
+    }
+
+    scheduleNextStar();
+  }
 
   function spawnStar() {
     if (!running || !arena) return;
 
     arena.querySelector(".star-target")?.remove();
 
+    if (starExpiryTimer !== null) {
+      clearTimeout(starExpiryTimer);
+      starExpiryTimer = null;
+    }
+
     const star = document.createElement("button");
+
     star.type = "button";
     star.className = "star-target";
-    star.textContent = Math.random() > .7 ? "✧" : "✦";
+    star.textContent = Math.random() > 0.7 ? "✧" : "✦";
     star.setAttribute("aria-label", "Catch this star");
 
     star.style.left = `${randomInteger(4, 87)}%`;
     star.style.top = `${randomInteger(5, 69)}%`;
+    star.style.zIndex = "5";
+    star.style.touchAction = "manipulation";
 
-    star.addEventListener("click", () => {
-      if (!running) return;
+    const wasCaught = { value: false };
 
-      score++;
-      appState.starsCaught++;
+    const handleCatch = event => {
+      catchStar(event, star, wasCaught);
+    };
 
-      if (scoreLabel) scoreLabel.textContent = String(score);
-      updateDiscoveryDashboard();
-
-      star.remove();
-
-      if (score >= 10) {
-        unlockAchievement("star-winner");
-      }
-
-      spawnStar();
-    });
+    /*
+      Pointer events register a touch immediately.
+      Click remains available as a keyboard fallback.
+      The shared guard prevents double-counting.
+    */
+    star.addEventListener("pointerdown", handleCatch);
+    star.addEventListener("click", handleCatch);
 
     arena.appendChild(star);
+
+    /*
+      A star remains available for 1.4 seconds.
+      Missing it schedules the next star independently.
+    */
+    starExpiryTimer = setTimeout(() => {
+      starExpiryTimer = null;
+
+      if (!running || wasCaught.value) return;
+
+      star.remove();
+      scheduleNextStar(120);
+    }, 1400);
   }
 
   function finishGame() {
     if (!running) return;
 
     running = false;
-    stopTimers();
-    arena?.querySelector(".star-target")?.remove();
+    clearGameTimers();
 
-    recordGameCompletion("stars");
+    arena?.querySelector(".star-target")?.remove();
 
     if (startButton) startButton.disabled = false;
     if (message) message.textContent = "ROUND COMPLETE.";
+
+    recordGameCompletion("stars");
 
     const content = byId("game-modal-content");
     if (!content) return;
@@ -4659,10 +4751,12 @@ function startStarCatcher() {
     content.appendChild(resultPanel(
       score >= 10 ? "🌟" : "✦",
       score >= 10 ? "STAR MAGNET." : "THE STARS SURVIVED.",
-      `You caught ${score} ${score === 1 ? "star" : "stars"}. ${
+      `You caught ${score} ${
+        score === 1 ? "star" : "stars"
+      }. ${
         score >= 10
-          ? "That's an excellent little high-speed run."
-          : "A replay is available whenever you want another round."
+          ? "An excellent high-speed run!"
+          : "Ready for another round?"
       }`,
       "PLAY AGAIN ↻",
       startStarCatcher
@@ -4670,37 +4764,45 @@ function startStarCatcher() {
   }
 
   startButton?.addEventListener("click", () => {
-    if (hasStarted && running) return;
+    if (running) return;
 
-    hasStarted = true;
-    running = true;
+    clearGameTimers();
+
     score = 0;
     timeLeft = 20;
+    running = true;
 
     if (scoreLabel) scoreLabel.textContent = "0";
     if (timeLabel) timeLabel.textContent = "20";
-    if (startButton) startButton.disabled = true;
+
+    if (bestLabel) {
+      bestLabel.textContent = String(
+        appState.starCatcherBest || 0
+      );
+    }
+
     if (message) message.textContent = "GO GO GO! ✦";
+    if (startButton) startButton.disabled = true;
 
     arena?.querySelector(".game-big-symbol")?.remove();
 
     recordGameStart();
     spawnStar();
 
-    spawnTimer = window.setInterval(spawnStar, 770);
+    clockTimer = setInterval(() => {
+      if (!running) return;
 
-    clockTimer = window.setInterval(() => {
       timeLeft--;
 
-      if (timeLabel) timeLabel.textContent = String(timeLeft);
+      if (timeLabel) {
+        timeLabel.textContent = String(timeLeft);
+      }
 
       if (timeLeft <= 0) {
         finishGame();
       }
     }, 1000);
   });
-
-  if (bestLabel) bestLabel.textContent = String(bestScore);
 }
 
 /* ============================================================
