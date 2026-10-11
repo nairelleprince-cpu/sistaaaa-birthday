@@ -5760,27 +5760,6 @@ if (document.readyState === "loading") {
   initialiseApp();
 }
 </script>
-
-  
-<script>
-/* ARCADE BUTTON FIX */
-document.addEventListener("click", function (event) {
-  const button = event.target.closest("[data-open-game]");
-  if (!button) return;
-
-  event.preventDefault();
-
-  const gameName = button.getAttribute("data-open-game");
-
-  if (typeof openGameModal === "function") {
-    openGameModal(gameName);
-  } else {
-    console.error("Arcade error: openGameModal() is unavailable.");
-    alert("The arcade hasn't initialised correctly. Please check the JavaScript.");
-  }
-});
-</script>
-</escape>
   
 </body>
   </html>
