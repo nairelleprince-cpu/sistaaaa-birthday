@@ -1,653 +1,1388 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#ffc3ec">
-<title>SISTAAAA.EXE ♡ Birthday Universe</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#081a38">
+<title>SISTAAAA.EXE — Birthday Universe</title>
 <style>
 :root{
-  --pink:#ff50bc;--hot:#ff16a8;--blue:#73e7ff;
-  --lilac:#c7a0ff;--ink:#351746;--paper:#fffaff;
-  --line:#9864bd;--shadow:#613781;
+  --navy:#081a38;
+  --blue:#287bff;
+  --black:#09090f;
+  --chrome:#c9d5e8;
+  --purple:#8b5cf6;
+  --cyan:#64e7ff;
+  --magenta:#f04ddb;
+  --teal:#0b777f;
+  --white:#edf5ff;
+  --muted:#98a9c9;
+  --panel:#10172b;
+  --panel2:#111e39;
+  --line:#34496d;
+  --glow:0 0 18px #287bff55,0 0 38px #8b5cf622;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;background:var(--black)}
 body{
-  margin:0;padding:12px 10px 85px;min-height:100vh;
-  color:var(--ink);font-family:Trebuchet MS,Verdana,sans-serif;
-  background:linear-gradient(-45deg,#ffbce5,#a9eaff,#ddc6ff,#fff0bd,#ffceef);
-  background-size:500% 500%;
-  animation:cosmicBg 12s ease infinite;
+  margin:0;min-height:100vh;padding:0 0 30px;
+  background:var(--black);color:var(--white);
+  font-family:Trebuchet MS,Verdana,sans-serif;
   overflow-x:hidden;
 }
-button{font:inherit;cursor:pointer}
-button:focus-visible{outline:3px solid #351746;outline-offset:4px}
-button:active{transform:scale(.94)}
+button,input{font:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible{
+  outline:3px solid var(--cyan);outline-offset:3px;
+}
+button:active{transform:scale(.97)}
+button:disabled{opacity:.45;cursor:not-allowed}
+img{max-width:100%}
 .hidden{display:none!important}
-@keyframes cosmicBg{
-  0%,100%{background-position:0% 50%}
-  50%{background-position:100% 50%}
+.muted{color:var(--muted)}
+.small{font-size:12px;line-height:1.7}
+.eyebrow{
+  color:var(--cyan);font-size:10px;font-weight:bold;
+  letter-spacing:2.5px;text-transform:uppercase;
 }
-@keyframes float{
-  0%,100%{transform:translateY(0) rotate(-4deg)}
-  50%{transform:translateY(-13px) rotate(4deg)}
+h1,h2,h3,p{overflow-wrap:anywhere}
+h1,h2,h3{line-height:1.16}
+h1{font-size:clamp(34px,9vw,68px);margin:12px 0}
+h2{font-size:clamp(24px,6vw,38px);margin:0 0 13px}
+h3{font-size:18px;margin:0 0 9px}
+p{line-height:1.75}
+button, a{-webkit-tap-highlight-color:transparent}
+a{color:var(--cyan)}
+@keyframes rotateCD{to{transform:rotate(360deg)}}
+@keyframes reverseRotate{to{transform:rotate(-360deg)}}
+@keyframes floatUp{
+  0%,100%{transform:translateY(0) rotate(-3deg)}
+  50%{transform:translateY(-12px) rotate(3deg)}
 }
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes reverseSpin{to{transform:rotate(-360deg)}}
-@keyframes pulse{
-  0%,100%{transform:scale(1)}
-  50%{transform:scale(1.07)}
+@keyframes pulseGlow{
+  0%,100%{box-shadow:0 0 10px #287bff33,0 0 25px #8b5cf622}
+  50%{box-shadow:0 0 22px #287bff88,0 0 46px #8b5cf644}
 }
-@keyframes glow{
-  0%,100%{box-shadow:0 0 8px #ff50bc66,0 0 18px #73e7ff44}
-  50%{box-shadow:0 0 20px #ff50bc,0 0 35px #73e7ff}
+@keyframes neonFlicker{
+  0%,92%,96%,100%{opacity:1}
+  93%,95%{opacity:.62}
 }
-@keyframes entrance{
-  from{opacity:0;transform:translateY(25px) scale(.96)}
-  to{opacity:1;transform:translateY(0) scale(1)}
+@keyframes textGlitch{
+  0%,92%,100%{text-shadow:2px 0 var(--blue),-2px 0 var(--purple)}
+  94%{text-shadow:-5px 0 var(--cyan),5px 0 var(--magenta)}
+  97%{text-shadow:3px 2px var(--purple),-3px -2px var(--cyan)}
 }
-@keyframes twinkle{
-  0%,100%{opacity:.2;transform:scale(.5) rotate(0)}
-  50%{opacity:1;transform:scale(1.5) rotate(40deg)}
+@keyframes scanDrift{to{background-position:0 12px}}
+@keyframes starTwinkle{
+  0%,100%{opacity:.2;transform:scale(.6) rotate(0)}
+  50%{opacity:1;transform:scale(1.3) rotate(45deg)}
 }
-@keyframes glitch{
-  0%,91%,100%{text-shadow:2px 2px var(--blue),-2px -2px var(--pink)}
-  93%{text-shadow:-5px 0 var(--blue),5px 0 var(--pink)}
-  96%{text-shadow:4px -3px var(--blue),-4px 3px var(--pink)}
-}
-@keyframes rainbow{to{filter:hue-rotate(360deg)}}
-@keyframes marquee{to{transform:translateX(-50%)}}
-@keyframes blink{50%{opacity:0}}
-@keyframes driftUp{
-  from{transform:translateY(110vh) rotate(0);opacity:0}
-  10%,85%{opacity:1}
-  to{transform:translateY(-15vh) rotate(300deg);opacity:0}
-}
-@keyframes fall{
-  to{transform:translateY(110vh) rotate(800deg);opacity:.8}
-}
-@keyframes pop{
-  0%{transform:scale(.2);opacity:0}
-  35%{transform:scale(1.5);opacity:1}
-  100%{transform:translateY(-65px) scale(.8);opacity:0}
-}
-@keyframes scan{to{background-position:0 8px}}
 @keyframes shimmer{
   from{background-position:200% center}
   to{background-position:-200% center}
 }
-@keyframes wiggle{
-  0%,100%{rotate:0deg}
-  25%{rotate:-4deg}
-  75%{rotate:4deg}
+@keyframes enterScene{
+  from{opacity:0;transform:translateY(18px) scale(.985)}
+  to{opacity:1;transform:translateY(0) scale(1)}
 }
-@keyframes orbit{to{transform:rotate(360deg)}}
-
-  @keyframes orbit{to{transform:rotate(360deg)}}
-@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
-@keyframes borderDance{to{border-color:#73e7ff}}
-#universe{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
-#sparkles,#floaties,#confetti{position:absolute;inset:0;overflow:hidden}
-.spark{position:absolute;color:white;text-shadow:0 0 10px #ff16a8;animation:twinkle var(--t) ease-in-out infinite}
-.floaty{position:absolute;bottom:-12vh;left:var(--x);font-size:var(--s);animation:driftUp var(--d) linear infinite;animation-delay:var(--delay);filter:drop-shadow(0 0 6px #ff50bc)}
-.piece{position:absolute;top:-15px;left:var(--x);width:var(--s);height:calc(var(--s)*1.5);background:var(--c);animation:fall var(--d) linear forwards}
-.desktop{position:relative;z-index:1;max-width:850px;margin:auto}
-.topbar,.taskbar{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:10px 12px;background:linear-gradient(100deg,#ff9bdb,#bcefff,#e8d4ff);border:2px solid var(--line);box-shadow:3px 4px 0 var(--shadow);font-size:11px;font-weight:bold}
-.topbar{border-radius:10px}
-.window{margin-top:15px;overflow:hidden;background:#fffaffef;border:2px solid var(--line);border-radius:10px;box-shadow:5px 6px 0 var(--shadow),0 0 22px #fff9;animation:entrance .55s both}
-.titlebar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px;background:linear-gradient(90deg,#ff98d8,#b7eaff,#dfcbff);border-bottom:2px solid var(--line);font-size:11px;font-weight:bold;overflow-wrap:anywhere}
-.content{padding:15px}
-.boot{min-height:74vh;display:flex;align-items:center;justify-content:center;padding:16px 0}
-.bootbox{width:100%;max-width:470px;text-align:center;padding:24px 17px;background:var(--paper);border:3px ridge var(--lilac);border-radius:16px;box-shadow:0 0 25px var(--pink),6px 7px 0 var(--shadow);animation:glow 3s infinite}
-.bootlogo{display:inline-block;font-size:68px;filter:drop-shadow(0 0 12px var(--pink));animation:spin 9s linear infinite}
-.kicker{font-size:10px;letter-spacing:2px;font-weight:bold}
-h1{font-size:clamp(30px,8vw,49px);line-height:1.1;color:#bd258e;text-shadow:2px 2px var(--blue),4px 4px var(--lilac);animation:glitch 5s steps(1) infinite}
-h2{font-size:clamp(20px,5vw,28px);line-height:1.2;margin:0 0 12px}
-h3{margin:0 0 8px}
-p{line-height:1.65}
-.small{font-size:12px}
-.muted{color:#705c82}
-.progress{height:14px;padding:2px;max-width:290px;margin:17px auto;border:2px solid var(--line);border-radius:4px}
-.progress span{display:block;width:100%;height:100%;background:repeating-linear-gradient(90deg,#ff63c7 0 12px,#8ce6ff 12px 24px);animation:shimmer 2s linear infinite;background-size:200% 100%}
-.btn,.taskbtn{border:2px solid #71499b;border-radius:8px;padding:11px 14px;font-weight:bold;color:var(--ink);background:linear-gradient(#fff,#ffc7e9);box-shadow:3px 3px 0 #71499b;transition:filter .2s,box-shadow .2s}
-.btn:hover,.taskbtn:hover{filter:saturate(1.5);animation:wiggle .3s}
-.btn.pink{animation:glow 2s infinite}
-.btn.blue{background:linear-gradient(#fff,#bcefff)}
-.btn.purple{background:linear-gradient(#fff,#e0ccff)}
-.wide{width:100%;max-width:300px}
-.stickerrow{display:flex;align-items:center;justify-content:center;gap:13px;flex-wrap:wrap;margin:15px 0;font-size:25px}
-.stickerrow span{display:inline-block;animation:float 3s ease-in-out infinite}
-.stickerrow span:nth-child(even){animation-delay:-1.3s}
-.hero{text-align:center;position:relative;overflow:hidden;padding:20px 10px;background:linear-gradient(135deg,#ffe0f4,#d9f6ff,#eee0ff);border:2px dashed #b47ccc;border-radius:13px}
-.heroemoji{font-size:35px;letter-spacing:4px;animation:float 3s infinite}
-.hero h2{margin:12px 0;color:#b32b8b}
-.badge{display:inline-block;margin:3px;padding:5px 8px;border:1px solid #a16abb;border-radius:5px;background:#fff;font-size:10px;font-weight:bold}
-.typeline{min-height:25px;font-weight:bold}
-.cursor{animation:blink .7s steps(1) infinite}
-.movingline{overflow:hidden;white-space:nowrap;border-block:1px dashed #b184cb;padding:8px 0;margin:13px 0;background:#fff2fb}
-.movingline span{display:inline-block;min-width:200%;font-size:12px;font-weight:bold;animation:marquee 18s linear infinite}
-.gridicons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:16px 0}
-.iconbtn{min-width:0;min-height:100px;padding:9px 3px;border:1px solid #c8a2e1;border-radius:10px;background:linear-gradient(#fff,#fae5ff);color:var(--ink);font-size:10px;font-weight:bold;box-shadow:2px 3px 0 #ddc3ed;transition:transform .2s,box-shadow .2s}
-.iconbtn:hover{transform:translateY(-5px) rotate(-2deg);box-shadow:4px 7px 0 #ddc3ed}
-.iconbtn span{display:block;font-size:28px;margin-bottom:8px;animation:bounce 3s infinite}
-.iconbtn:nth-child(2n) span{animation-delay:-1s}
-.iconbtn:nth-child(3n) span{animation-delay:-2s}
-.statusbox{padding:11px;border:1px dashed #b184cb;background:#fff0fa;border-radius:8px;font-size:12px}
-.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.photo{min-width:0;padding:7px;background:white;border:1px solid #caa9de;box-shadow:3px 4px 0 #d3b8e5;transform:rotate(-1deg);animation:entrance .6s both;transition:transform .25s}
-.photo:nth-child(even){transform:rotate(1.5deg);animation-delay:.12s}
-.photo:hover{transform:translateY(-5px) rotate(0) scale(1.03)}
-.photo-img{display:block;width:100%;height:150px;object-fit:cover;cursor:zoom-in;background:linear-gradient(135deg,#ffe0f2,#d8f4ff)}
-.placeholder{min-height:110px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:8px;background:linear-gradient(140deg,#ffe4f5,#d1f4ff);color:#72528f}
-.placeholder strong{font-size:31px;animation:float 3s infinite}
-.caption{text-align:center;padding:8px 3px 3px;font-size:11px;font-weight:bold;overflow-wrap:anywhere}
-.caption small{display:block;margin-top:4px;color:#776187;font-weight:normal}
-.letter{padding:16px;background:repeating-linear-gradient(#fffaff 0 29px,#f1dff2 30px 31px);border:1px solid #d5b6e7;border-radius:7px}
-.letter p{margin:0 0 15px}
-.signoff{font-weight:bold;color:#b32b8b}
-.wish{min-height:110px;display:flex;align-items:center;justify-content:center;padding:16px;text-align:center;border:2px dashed #b184cb;background:linear-gradient(135deg,#ffebf8,#e7f8ff);border-radius:10px;font-weight:bold;font-size:15px}
-.secret{text-align:center;padding:15px;border:2px dashed #c78bd7;border-radius:10px;background:#fff0fb}
-.bigsecret{font-size:48px;animation:pulse 1.8s infinite}
-.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.stat{padding:15px 8px;text-align:center;background:linear-gradient(135deg,#ffe3f5,#e3f7ff);border:1px solid #d1a3e6;border-radius:10px;animation:glow 4s infinite}
-.stat strong{display:block;font-size:23px;color:#b32b8b}
-.heartarea{text-align:center;padding:15px}
-.heart-button{width:65px;height:65px;margin:7px;font-size:30px;border:2px solid #ca80bd;border-radius:50%;background:#fff2fa;animation:pulse 1.5s infinite;box-shadow:0 0 15px #ff50bc55}
-#heartCount{font-size:27px;color:#b32b8b;font-weight:bold}
-.footer{text-align:center;font-size:11px;color:#5d4774;padding:22px 6px}
-.taskbar{position:fixed;bottom:0;left:0;right:0;z-index:5;flex-wrap:nowrap;border-width:2px 0 0;border-radius:0;box-shadow:0 -3px 14px #fff8;padding:9px 12px}
-.taskbar .taskbtn{padding:7px 9px;font-size:11px}
-.toast{position:fixed;z-index:12;left:50%;bottom:70px;transform:translateX(-50%);width:max-content;max-width:90%;padding:11px 14px;border:2px solid var(--line);border-radius:8px;background:#fffaff;box-shadow:3px 4px 0 var(--shadow);text-align:center;font-size:12px;animation:entrance .25s both}
-.sparkburst{position:fixed;z-index:14;pointer-events:none;font-size:24px;animation:pop .9s ease-out forwards}
-.scanlines{pointer-events:none;position:fixed;z-index:9;inset:0;opacity:.055;background:repeating-linear-gradient(0deg,transparent 0 3px,#655077 4px,#655077 5px);animation:scan .5s linear infinite}
-#lightbox{position:fixed;inset:0;z-index:20;background:#170c26ee;display:flex;align-items:center;justify-content:center;padding:18px}
-#lightbox img{max-width:100%;max-height:80vh;object-fit:contain;border:4px solid white;box-shadow:0 0 30px var(--pink)}
-#lightbox button{position:absolute;right:16px;top:18px}
-@media(max-width:390px){
- body{padding:7px 6px 78px}.content{padding:11px}
- .gridicons{gap:6px}.iconbtn{min-height:88px;font-size:9px}
- .iconbtn span{font-size:25px}.photo-img{height:120px}
- .gallery{gap:9px}.taskbar{padding:7px}
+@keyframes confettiDrop{
+  to{transform:translateY(110vh) rotate(720deg);opacity:.15}
 }
-@media(prefers-reduced-motion:reduce){
- *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
+@keyframes bars{
+  0%,100%{transform:scaleY(.25)}
+  50%{transform:scaleY(1)}
 }
+@keyframes pixelBlink{50%{opacity:.2}}
+@keyframes borderGlow{
+  0%,100%{border-color:#287bff}
+  50%{border-color:#8b5cf6}
+}
+@keyframes heartFloat{
+  0%{transform:translateY(0) scale(.7);opacity:0}
+  15%{opacity:1}
+  100%{transform:translateY(-170px) scale(1.3);opacity:0}
+}
+  
+/* THE UNIVERSE */
+#universe{
+  position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;
+  background:
+    radial-gradient(ellipse at 15% 15%,#10285b66,transparent 42%),
+    radial-gradient(ellipse at 85% 65%,#32155b55,transparent 45%),
+    var(--black);
+}
+#stars{position:absolute;inset:0;overflow:hidden}
+.star{
+  position:absolute;color:var(--cyan);
+  text-shadow:0 0 12px var(--blue);
+  animation:starTwinkle var(--speed,3s) ease-in-out infinite;
+}
+.scanlines{
+  position:fixed;inset:0;z-index:20;pointer-events:none;opacity:.055;
+  background:repeating-linear-gradient(
+    to bottom,transparent 0 3px,#b6ddff 4px,#b6ddff 5px
+  );
+  animation:scanDrift .6s linear infinite;
+}
+#confetti{position:fixed;inset:0;z-index:80;pointer-events:none;overflow:hidden}
+.confetti-piece{
+  position:absolute;top:-18px;left:var(--x);
+  width:var(--w);height:var(--h);background:var(--c);
+  animation:confettiDrop var(--duration) linear forwards;
+}
+#heartParticles{
+  position:fixed;inset:0;z-index:75;pointer-events:none;overflow:hidden;
+}
+.floating-heart{
+  position:absolute;bottom:20%;left:var(--x);
+  color:var(--cyan);font-size:var(--size);
+  animation:heartFloat 2.5s ease-out forwards;
+  text-shadow:0 0 12px var(--blue);
+}
+/* MAIN SHELL */
+#app{position:relative;z-index:1;width:100%;max-width:1040px;margin:auto;padding:12px}
+.topbar{
+  display:flex;justify-content:space-between;align-items:center;gap:10px;
+  flex-wrap:wrap;padding:12px 15px;
+  background:linear-gradient(105deg,#0a1630,#12264a,#17102c);
+  border:1px solid var(--line);border-radius:9px;
+  box-shadow:var(--glow);font-size:10px;letter-spacing:1px;
+}
+.brand{font-weight:bold;letter-spacing:2px;color:var(--chrome)}
+.online{color:var(--cyan)}
+.desktop-window{
+  border:1px solid var(--line);border-radius:10px;overflow:hidden;
+  background:linear-gradient(145deg,#10172bf5,#080d1af5);
+  box-shadow:0 12px 35px #0008,var(--glow);
+  margin:14px 0;animation:enterScene .45s both;
+}
+.titlebar{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:11px 13px;background:linear-gradient(100deg,#101f3c,#191631);
+  border-bottom:1px solid var(--line);font-size:10px;letter-spacing:1px;
+}
+.window-lights{display:flex;gap:5px;flex-shrink:0}
+.window-lights i{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--blue);box-shadow:0 0 8px #287bff88;
+}
+.window-lights i:nth-child(2){background:var(--purple)}
+.window-lights i:nth-child(3){background:var(--cyan)}
+.content{padding:clamp(14px,3vw,28px)}
+/* CONTROLS */
+.btn{
+  display:inline-flex;justify-content:center;align-items:center;gap:8px;
+  padding:11px 15px;border:1px solid var(--blue);border-radius:6px;
+  background:linear-gradient(135deg,#102b57,#13203e);
+  color:var(--white);font-weight:bold;font-size:12px;letter-spacing:.5px;
+  box-shadow:0 0 14px #287bff22;transition:background .2s,box-shadow .2s;
+}
+.btn:hover{background:#173565;box-shadow:0 0 20px #287bff66}
+.btn.purple{border-color:var(--purple);background:#21153e}
+.btn.chrome{border-color:#8a9bb8;background:linear-gradient(135deg,#29364e,#111827)}
+.btn.ghost{background:#090e1bbd;border-color:#425578}
+.btn.block{width:100%}
+.pill{
+  display:inline-block;padding:5px 9px;border:1px solid #405b88;
+  border-radius:3px;background:#101b32;color:var(--cyan);
+  font-size:9px;font-weight:bold;letter-spacing:1px;
+}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--blue),var(--purple),transparent);margin:20px 0}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.card{
+  min-width:0;padding:15px;border:1px solid #2d4166;border-radius:8px;
+  background:linear-gradient(145deg,#111c34,#0b1020);
+}
+.card p:last-child{margin-bottom:0}
+.card-icon{font-size:28px;display:block;margin-bottom:10px}
+.card-title{font-weight:bold;color:var(--chrome)}
+/* SCREEN NAVIGATION */
+.page{display:none;min-height:55vh}
+.page.active{display:block;animation:enterScene .4s both}
+.navbar{
+  display:flex;gap:7px;overflow-x:auto;padding:9px 0 12px;
+  scrollbar-width:thin;scrollbar-color:var(--blue) #0a1020;
+}
+.navbtn{
+  flex:0 0 auto;padding:9px 10px;color:var(--muted);
+  background:#0c1326;border:1px solid #2c3c5d;border-radius:5px;
+  font-size:10px;font-weight:bold;letter-spacing:.4px;
+}
+.navbtn.active,.navbtn:hover{
+  color:var(--white);border-color:var(--blue);
+  background:#102650;box-shadow:0 0 12px #287bff33;
+}
+.hero{
+  position:relative;overflow:hidden;text-align:center;
+  padding:clamp(22px,5vw,48px) 14px;
+  border:1px solid #345d9e;border-radius:9px;
+  background:
+    radial-gradient(ellipse at 50% 0%,#224b8b66,transparent 55%),
+    linear-gradient(145deg,#0c1730,#0d1021 65%,#1c1030);
+}
+.hero h1{
+  background:linear-gradient(100deg,#e8f7ff,#64e7ff,#8daeff,#d7c1ff,#e8f7ff);
+  background-size:250% auto;color:transparent;background-clip:text;
+  -webkit-background-clip:text;animation:shimmer 6s linear infinite,textGlitch 7s steps(1) infinite;
+}
+.hero-orb{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:90px;height:90px;border-radius:50%;
+  border:1px solid #7798cb;background:radial-gradient(circle,#243f70,#070b16 70%);
+  box-shadow:0 0 30px #287bff55,inset 0 0 20px #64e7ff22;
+  font-size:42px;animation:floatUp 4s ease-in-out infinite;
+}
+.launch-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:18px 0}
+.launch-card{
+  min-width:0;text-align:left;padding:16px 12px;
+  color:var(--white);border:1px solid #34486c;border-radius:7px;
+  background:linear-gradient(145deg,#111d37,#0a0f1d);
+  transition:transform .2s,border-color .2s,box-shadow .2s;
+}
+.launch-card:hover{transform:translateY(-3px);border-color:var(--cyan);box-shadow:0 0 18px #287bff22}
+.launch-card .emoji{display:block;font-size:29px;margin-bottom:12px}
+.launch-card strong{display:block;font-size:12px;margin-bottom:5px}
+.launch-card small{color:var(--muted);font-size:10px;line-height:1.5}
+/* BOOT SCREEN */
+#boot{
+  position:relative;z-index:2;min-height:100svh;padding:22px;
+  display:flex;align-items:center;justify-content:center;
+  background:
+    radial-gradient(ellipse at 50% 35%,#152e64aa,transparent 60%),
+    linear-gradient(160deg,#070b16,#09172e 55%,#190f2a);
+}
+.bootbox{
+  width:100%;max-width:520px;text-align:center;padding:clamp(20px,5vw,38px) 18px;
+  border:1px solid #496a9e;border-radius:10px;
+  background:#070c1bea;box-shadow:0 0 35px #287bff44,0 0 80px #8b5cf622;
+  animation:pulseGlow 4s ease-in-out infinite;
+}
+.boot-cd{
+  width:98px;height:98px;margin:0 auto 20px;position:relative;
+  display:flex;align-items:center;justify-content:center;border-radius:50%;
+  background:conic-gradient(from 0deg,#aab7ca,#273b5d,#fff,#335d99,#9271ca,#101a2e,#ced9e8);
+  box-shadow:0 0 25px #287bff66;animation:rotateCD 12s linear infinite;
+}
+.boot-cd:before{
+  content:"";position:absolute;inset:14px;border-radius:50%;
+  background:radial-gradient(circle,#10182b 0 15%,#7da0c8 16% 18%,#12172b 20% 100%);
+  border:1px solid #adcee9;
+}
+.boot-cd:after{
+  content:"S";position:absolute;color:var(--cyan);font-size:22px;font-weight:bold;
+  text-shadow:0 0 8px var(--blue);
+}
+.bootbox h1{font-size:clamp(29px,8vw,48px);letter-spacing:2px}
+.boot-progress{
+  height:10px;border:1px solid #3a5889;border-radius:2px;
+  margin:19px 0 8px;overflow:hidden;background:#080d19;
+}
+.boot-progress span{
+  display:block;width:100%;height:100%;
+  background:linear-gradient(90deg,var(--blue),var(--cyan),var(--purple));
+  background-size:200% 100%;animation:shimmer 2s linear infinite;
+}
+#bootMessage{min-height:22px;color:var(--cyan);font:11px monospace;letter-spacing:.5px}
 </style>
 </head>
 <body>
-<div id="universe"><div id="sparkles"></div><div id="floaties"></div><div id="confetti"></div></div>
+<div id="universe"><div id="stars"></div></div>
 <div class="scanlines"></div>
+<div id="confetti"></div>
+<div id="heartParticles"></div>
+  
 
-<div class="desktop">
-  <div class="topbar">
-    <span>✿ SISTAAAA.EXE</span><span>BIRTHDAY UNIVERSE · v. 3.0</span><span>♡ ONLINE ♡</span>
+<section id="boot">
+  <div class="bootbox">
+    <div class="boot-cd" aria-hidden="true"></div>
+    <p class="eyebrow">MIDNIGHT SYSTEMS PRESENT</p>
+    <h1>SISTAAAA.EXE</h1>
+    <p class="muted">A tiny universe. One extraordinary human.</p>
+    <p>INITIALISING BIRTHDAY PROTOCOL FOR</p>
+    <h2 style="color:var(--cyan)">RELEBOHILE <span>💙</span></h2>
+    <div class="boot-progress"><span></span></div>
+    <p id="bootMessage">CHECKING FRIENDSHIP CONNECTION...</p>
+    <div class="divider"></div>
+    <p class="small muted">Y2K NOSTALGIA · DARK CYBERFAIRY · BLUE-HOUR MAGIC</p>
+    <button class="btn block" id="startBtn" type="button">▶ ENTER THE UNIVERSE</button>
+    <p class="small muted">Warning: extremely high levels of bestie appreciation.</p>
   </div>
+</section>
 
-  <section id="boot" class="boot">
-    <div class="bootbox">
-      <div class="bootlogo">💿</div>
-      <p class="kicker">BESTIE OPERATING SYSTEM PRESENTS</p>
-      <h1>SISTAAAA.EXE</h1>
-      <p>Installing birthday magic for<br><strong>RELEBOHILE</strong> ♡</p>
-      <div class="progress"><span></span></div>
-      <p class="small">FRIENDSHIP: CONNECTED<br>ICON STATUS: LEGENDARY</p>
-      <button class="btn pink wide" id="enterBtn" type="button">▶ ENTER THE CHAOS</button>
-      <p class="small muted">Warning: unreasonable amounts of love detected.</p>
-      <div class="stickerrow"><span>🎀</span><span>🦋</span><span>⭐</span><span>💗</span><span>🪩</span></div>
-    </div>
-  </section>
+<div id="app" class="hidden">
+  <header class="topbar">
+    <span class="brand">✦ SISTAAAA.EXE</span>
+    <span class="online">● SYSTEM ONLINE</span>
+    <span id="liveClock">00:00:00</span>
+  </header>
 
-  <main id="home" class="hidden">
-    <section class="window">
-      <div class="titlebar"><span>★ DESKTOP / WELCOME.EXE</span><span>_ □ ×</span></div>
-      <div class="content">
-        <div class="hero">
-          <div class="heroemoji">🎀 💿 🦋</div>
-          <span class="badge">TODAY'S MAIN CHARACTER</span>
-          <h2>HAPPY BIRTHDAY,<br>RELEBOHILE!!</h2>
-          <p class="typeline"><span id="typed"></span><span class="cursor">▌</span></p>
-          <p>Your birthday era has officially begun.</p>
-          <span class="badge">LOVE FROM YOUR SISTAAAA ♡</span>
+  <nav class="navbar" aria-label="Birthday universe navigation">
+    <button class="navbtn active" data-go="home">⌂ DESKTOP</button>
+    <button class="navbtn" data-go="museum">▧ MUSEUM</button>
+    <button class="navbtn" data-go="archive">♡ HEART ARCHIVE</button>
+    <button class="navbtn" data-go="timeline">✧ MEMORIES</button>
+    <button class="navbtn" data-go="arcade">▣ BESTIE OS</button>
+    <button class="navbtn" data-go="finale">★ FINALE</button>
+  </nav>
+
+  <main>
+    <section id="page-home" class="page active">
+      <div class="desktop-window">
+        <div class="titlebar">
+          <span>WELCOME.EXE / MAIN DESKTOP</span>
+          <span class="window-lights" aria-hidden="true"><i></i><i></i><i></i></span>
         </div>
-        <div class="movingline"><span>✧ BIRTHDAY GIRL DETECTED ✧ ICON ALERT ✧ HAPPY BIRTHDAY SISTAAAA ✧ ✧ BIRTHDAY GIRL DETECTED ✧ ICON ALERT ✧ HAPPY BIRTHDAY SISTAAAA ✧</span></div>
-        <p class="small muted" style="text-align:center">TAP AN ICON TO EXPLORE YOUR BIRTHDAY UNIVERSE ↓</p>
-        <div class="gridicons">
-          <button class="iconbtn" data-open="photos"><span>📸</span>PHOTO VAULT</button>
-          <button class="iconbtn" data-open="letter"><span>💌</span>LOVE LETTER</button>
-          <button class="iconbtn" data-open="wishes"><span>✨</span>WISH MACHINE</button>
-          <button class="iconbtn" data-open="secret"><span>🔒</span>SECRET FILE</button>
-          <button class="iconbtn" data-open="facts"><span>🦋</span>BESTIE STATS</button>
-          <button class="iconbtn" data-open="hearts"><span>💗</span>SEND HEARTS</button>
-        </div>
-        <div class="statusbox" id="status"><strong>◉ SYSTEM MESSAGE:</strong> Birthday girl detected. Compliments loading… 100% 💗</div>
-        <div class="stickerrow"><span>🌟</span><span>🫧</span><span>🩷</span><span>🪩</span><span>🌈</span></div>
-      </div>
-    </section>
+        <div class="content">
+          <div class="hero">
+            <span class="pill">✦ THE BIRTHDAY GIRL HAS ENTERED THE CHAT ✦</span>
+            <div style="margin:23px 0"><span class="hero-orb">💿</span></div>
+            <p class="eyebrow">A SPECIAL TRANSMISSION FOR</p>
+            <h1>HAPPY BIRTHDAY,<br>RELEBOHILE!</h1>
+            <p id="heroTyping">Loading a little universe made just for you...</p>
+            <div class="divider"></div>
+            <p>You were never supposed to be just another name on a screen.</p>
+            <p style="color:var(--cyan);font-weight:bold">YOU BECAME HOME. 💙</p>
+            <button class="btn" data-go="archive">OPEN YOUR HEART ARCHIVE ♡</button>
+          </div>
 
-    <section id="photos" class="window hidden">
-      <div class="titlebar"><span>📸 /PHOTO_VAULT</span><button class="taskbtn" data-close="photos">✕ CLOSE</button></div>
-      <div class="content">
-        <h2>THE RELEBOHILE GALLERY ✨</h2>
-        <p class="small muted">Eight little frames for eight iconic moments. We'll add the photos after the site works.</p>
-        <div class="gallery">
-          <div class="photo"><div class="placeholder"><strong>📷</strong><span>PHOTO 01</span></div><img class="photo-img hidden" src="" alt="Relebohile photo 1"><div class="caption">THE ICON ♡<small>zero competition</small></div></div>
-          <div class="photo"><div class="placeholder"><strong>🦋</strong><span>PHOTO 02</span></div><img class="photo-img hidden" src="" alt="Relebohile photo 2"><div class="caption">SISTAAAAA!!<small>my favourite human</small></div></div>
-          <div class="photo"><div class="placeholder"><strong>💿</strong><span>PHOTO 03</span></div><img class="photo-img hidden" src="" alt="Relebohile photo 3"><div class="caption">NO SKIPS ✧<small>certified classic</small></div></div>
-          <div class="photo"><div class="placeholder"><strong>⭐</strong><span>PHOTO 04</span></div><img class="photo-img hidden" src="" alt="Relebohile photo 4"><div class="caption">THE MOMENT<small>main-character energy</small></div></div>
-          <div class="photo"><div class="placeholder"><strong>🎀</strong><span>PHOTO 05</span></div><img class="photo-img hidden" src="" alt="Relebohile photo 5"><div class="caption">PRETTY IN EVERY FRAME<small>literally iconic</small></div></div>
-          <div class="photo"><div class="placeholder"><strong>🌈</strong><span>PHOTO 06</span></div><img class="photo-img hidden" src="" alt="Relebohile photo 6"><div class="caption">THE VIBE ✧<small>never boring</small></div></div>
-          <div class="photo"><div class="placeholder"><strong>💗</strong><span>PHOTO 07</span></div><img class="photo-img hidden" src="" alt="Relebohile photo 7"><div class="caption">ONE OF ONE ♡<small>no one else like you</small></div></div>
-          <div class="photo"><div class="placeholder"><strong>🪩</strong><span>PHOTO 08</span></div><img class="photo-img hidden" src="" alt="Relebohile photo 8"><div class="caption">BIRTHDAY LEGEND<small>forever celebrated</small></div></div>
-        </div>
-        <p class="statusbox">♡ Every picture can open full-size when we add its image link.</p>
-      </div>
-    </section>
+          <div class="moving-strip" style="margin:17px 0;padding:10px;overflow:hidden;border-block:1px solid var(--line);color:var(--cyan);font:11px monospace;white-space:nowrap">
+            ✦ CONNECTION ESTABLISHED ✦ BESTIE DETECTED ✦ BIRTHDAY MAGIC LOADED ✦ CONNECTION ESTABLISHED ✦ BESTIE DETECTED ✦
+          </div>
 
-    <section id="letter" class="window hidden">
-      <div class="titlebar"><span>💌 /LETTER_FOR_SISTAAAA.txt</span><button class="taskbtn" data-close="letter">✕ CLOSE</button></div>
-      <div class="content"><div class="letter">
-        <p><strong>TO MY SISTAAAA, RELEBOHILE ♡</strong></p>
-        <p>HAPPIEST BIRTHDAY, SISTAAAA!! 😭💗</p>
-        <p>Imagine that we met so randomly on Instagram, and now, almost a year later, you're someone I get to call my family. HOW IS THAT EVEN REAL?!</p>
-        <p>I genuinely feel like the luckiest girl on earth to have you as my sistaa and bestiee. Somewhere along the way, you became a place of comfort for me. When things at home felt chaotic, I found a sense of home in you, and that means more to me than I can properly explain.</p>
-        <p>For your new year of life, I wish you ALL the luck and blessings in the world. I hope beautiful things find their way to you, that your dreams get room to grow, that you have so many reasons to smile, and that life gives you the happiness and love you deserve.</p>
-        <p>Today is YOUR day, so please go be iconic, enjoy yourself, and let the world celebrate you. YOU ARE THE MAIN CHARACTER. NO ARGUMENTS. 🎀</p>
-        <p>I'm so glad our paths crossed, Sistaaaa. I'm so grateful you're my bestie and my family. ♡</p>
-        <p class="signoff">ALL MY LOVE,<br>YOUR SISTAAAA 🫶</p>
-        <p class="small muted">P.S. You are legally required to have the most iconic birthday ever. I don't make the rules. 💿</p>
-      </div><p class="small muted">This letter is yours to edit. Make every word sound like you.</p></div>
-    </section>
+          <h2 style="margin-top:25px">YOUR LITTLE UNIVERSE</h2>
+          <p class="muted small">Choose a portal. There are secrets hiding in here. ♡</p>
 
-    <section id="wishes" class="window hidden">
-      <div class="titlebar"><span>✨ WISH_GENERATOR.exe</span><button class="taskbtn" data-close="wishes">✕ CLOSE</button></div>
-      <div class="content">
-        <h2>YOUR PERSONAL WISH MACHINE 🌠</h2>
-        <p>Generate a little wish for the year ahead.</p>
-        <div class="wish" id="wish">May your year be filled with luck, love, and blessings you never even knew to ask for. ♡</div>
-        <p style="text-align:center"><button class="btn purple pink" id="wishBtn">✧ ANOTHER WISH ✧</button></p>
-        <div class="stickerrow"><span>🍀</span><span>🌠</span><span>🦋</span><span>💎</span></div>
-      </div>
-    </section>
+          <div class="launch-grid">
+            <button class="launch-card" data-go="museum">
+              <span class="emoji">▧</span>
+              <strong>THE RELEBOHILE MUSEUM</strong>
+              <small>Twenty-five frames waiting to become memories.</small>
+            </button>
+            <button class="launch-card" data-go="archive">
+              <span class="emoji">♡</span>
+              <strong>THE HEART ARCHIVE</strong>
+              <small>A letter for someone who became home.</small>
+            </button>
+            <button class="launch-card" data-go="timeline">
+              <span class="emoji">✧</span>
+              <strong>OUR LITTLE ORBIT</strong>
+              <small>A friendship timeline, written with love.</small>
+            </button>
+            <button class="launch-card" data-go="arcade">
+              <span class="emoji">▣</span>
+              <strong>BESTIE OPERATING SYSTEM</strong>
+              <small>Quizzes, wishes, secrets and tiny surprises.</small>
+            </button>
+            <button class="launch-card" data-go="finale">
+              <span class="emoji">★</span>
+              <strong>THE FINAL LEVEL</strong>
+              <small>Proceed when you're ready for birthday chaos.</small>
+            </button>
+            <button class="launch-card" id="openMusicFromHome">
+              <span class="emoji">♫</span>
+              <strong>SISTAAAA RADIO</strong>
+              <small>Your own little soundtrack. Open the player.</small>
+            </button>
+          </div>
 
-        <section id="secret" class="window hidden">
-      <div class="titlebar"><span>🔒 /CLASSIFIED/SISTAAAA.dat</span><button class="taskbtn" data-close="secret">✕ CLOSE</button></div>
-      <div class="content">
-        <div class="secret">
-          <div class="bigsecret" id="secretIcon">🔐</div>
-          <h2>TOP SECRET: FOR RELEBOHILE ONLY</h2>
-          <p>You've discovered a classified file from the Department of Bestie Affairs.</p>
-          <button class="btn pink" id="secretBtn">♡ UNLOCK YOUR FILE ♡</button>
-          <div id="secretMessage" class="hidden">
-            <div class="stickerrow"><span>💗</span><span>🦋</span><span>🌷</span><span>💗</span></div>
-            <h2>YOU ARE REAL FAMILY. ♡</h2>
-            <p>Out of all the random ways two people could meet, somehow our paths crossed. And I'm so glad they did, Sistaaaa.</p>
-            <p>You have a place in my world that is completely your own. Today, the birthday universe is officially reminding you how loved and celebrated you are!</p>
-            <p><strong>YOUR OFFICIAL STATUS: UNREPLACEABLE BESTIE.</strong></p>
+          <div class="card">
+            <span class="eyebrow">SYSTEM MESSAGE #001</span>
+            <h3 style="margin-top:9px">A friendship can cross a whole world.</h3>
+            <p class="small">Sometimes someone enters your life so casually that you don't realise they're becoming important until they've already found a permanent place in your heart. This universe celebrates that kind of connection.</p>
           </div>
         </div>
       </div>
-    </section>
+              </section>
 
-    <section id="facts" class="window hidden">
-      <div class="titlebar"><span>🦋 /SYSTEM/STATS.exe</span><button class="taskbtn" data-close="facts">✕ CLOSE</button></div>
-      <div class="content">
-        <h2>THE SISTAAAA STATISTICS 📊</h2>
-        <p>Absolutely scientific. Definitely peer-reviewed by the Council of Besties.</p>
-        <div class="stats">
-          <div class="stat"><strong>∞</strong>Love sent your way</div>
-          <div class="stat"><strong>100%</strong>Main character</div>
-          <div class="stat"><strong>LEGEND</strong>Official status</div>
-          <div class="stat"><strong>1 of 1</strong>There's only you</div>
-          <div class="stat"><strong>MAX</strong>Birthday sparkle</div>
-          <div class="stat"><strong>∞/10</strong>Bestie rating</div>
+    
+    <section id="page-museum" class="page">
+      <div class="desktop-window">
+        <div class="titlebar">
+          <span>PHOTO_VAULT.exe / THE RELEBOHILE MUSEUM</span>
+          <span class="window-lights" aria-hidden="true"><i></i><i></i><i></i></span>
         </div>
-        <div class="stickerrow"><span>🪩</span><span>🌈</span><span>⭐</span><span>🫧</span></div>
-        <div class="statusbox">SYSTEM VERDICT: an extraordinarily important human has entered another year of being iconic. ♡</div>
-      </div>
-    </section>
-
-    <section id="hearts" class="window hidden">
-      <div class="titlebar"><span>💗 /HEART_SERVER/LOVE.exe</span><button class="taskbtn" data-close="hearts">✕ CLOSE</button></div>
-      <div class="content">
-        <div class="heartarea">
-          <div style="font-size:48px;animation:float 2.5s infinite">💌</div>
-          <h2>INFINITE HEART DELIVERY</h2>
-          <p>Tap the heart. Launch a tiny explosion of love into the birthday universe!</p>
-          <button class="heart-button" id="heartBtn" aria-label="Send a heart">💗</button>
-          <p>HEARTS SENT</p>
-          <div id="heartCount">000</div>
-          <p class="small muted">Warning: the delivery limit has been removed permanently.</p>
-          <button class="btn blue" id="heartParty">🎉 INITIATE HEART STORM</button>
+        <div class="content">
+          <p class="eyebrow">EXHIBITION 001 · A HUMAN WORTH CELEBRATING</p>
+          <h2>THE RELEBOHILE MUSEUM 💙</h2>
+          <p>Twenty-five little windows into the person this universe is celebrating. Every frame will be able to open full-size.</p>
+          <div class="card" style="margin:17px 0">
+            <p class="small"><strong style="color:var(--cyan)">HOW TO ADD YOUR PHOTOS</strong></p>
+            <p class="small">Upload your images to the same GitHub repository as this page. Name them <code>photo-01.jpg</code> through <code>photo-25.jpg</code>, or update their filenames in the central PHOTO_ALBUM list in the final code chunk.</p>
+          </div>
+          <div id="photoGallery" class="gallery-grid" aria-label="Birthday photo gallery"></div>
+          <p class="muted small">Tap any photo to see it larger. Your memories deserve the big screen. ✦</p>
+          <button class="btn ghost" data-go="timeline">CONTINUE TO OUR LITTLE ORBIT →</button>
         </div>
       </div>
     </section>
 
+    <section id="page-archive" class="page">
+      <div class="desktop-window">
+        <div class="titlebar">
+          <span>HEART_ARCHIVE.txt / PERSONAL TRANSMISSION</span>
+          <span class="window-lights" aria-hidden="true"><i></i><i></i><i></i></span>
+        </div>
+        <div class="content">
+          <p class="eyebrow">CLASSIFICATION: VERY, VERY LOVED</p>
+          <h2>TO MY SISTAAAA. ♡</h2>
+          <p class="muted small">A message from your girl, across the distance.</p>
+          <div class="letter-paper">
+            <p><strong>To my Sistaaaa, Relebohile, 💙</strong></p>
+
+            <p>Happy birthday, my girl. 🖤💜</p>
+
+            <p>Sometimes I think about how you were the first friend I ever made online. Out of all the strangers in this enormous world, somehow, I found you. And somewhere along the way, without me even realising when it happened, you became my best friend.</p>
+
+            <p>How do I even explain what you mean to me? Because I don't think the usual words are enough for something like this.</p>
+
+            <p>We've never met in person. We haven't sat beside each other or shared the same room. We don't even talk every single day. And yet, none of that makes this friendship feel less real to me. It doesn't make you any less important, or make the place you've found in my life any smaller.</p>
+
+            <p>Because if I've had a horrible day, if everything feels too heavy, or if I'm in a room full of people but still need someone who feels familiar, you're one of the people I'd want to run to. You're someone I want to tell things to. Someone I want to share the little moments with, not just the big ones. Someone whose presence can matter even when we're not actively talking.</p>
+
+            <p><strong class="letter-highlight">Somehow, you became home to me.</strong></p>
+
+            <p>Not because distance doesn't exist, or because friendship is always easy. But because you became someone who feels like family to me. Someone I feel connected to even across all those kilometres. Someone who found a place in my heart without needing to be physically beside me to earn it.</p>
+
+            <p>It's still a little unbelievable to me that a person I met so randomly on the internet could become this important. I didn't plan it. I didn't know it was happening. One day you were someone I was getting to know, and then, without any grand announcement, you were my Sistaaaa. My bestie. My family.</p>
+
+            <p>I'm so glad our paths crossed. Out of all the people we could have met, all the conversations we could have had, somehow ours happened. And if I could go back to that beginning already knowing how much you'd come to mean to me, I'd still want our paths to cross.</p>
+
+            <p>For this new chapter of your life, I hope beautiful things find their way to you. I hope you get opportunities that make you excited about your future, people who appreciate you properly, moments that make you laugh until your face hurts, and days that remind you how much there is to look forward to.</p>
+
+            <p>I hope your dreams have room to grow. I hope you get to be unapologetically yourself. I hope the world gives you reasons to feel proud of who you are, and that even on the ordinary days, you remember that your existence matters beyond what you do for anyone else.</p>
+
+            <p>You deserve happiness that doesn't need to be earned through exhaustion. You deserve kindness, laughter, love, wonderful surprises, and a whole year full of little things that make life feel brighter.</p>
+
+            <p>And I wish I could be there in person to celebrate you today. But even from far away, I am celebrating you. I'm celebrating the day you were born, the person you are, and the fact that I get to call you my Sistaaaa.</p>
+
+            <p>Thank you for being the first online friend who became so much more than I expected. Thank you for becoming someone I feel safe with, someone who feels like family, and someone I can imagine running to after a difficult day, even if there are miles between us.</p>
+
+            <p><strong>Out of all the strangers in the world, I found you. And I'm so glad I did. ♡</strong></p>
+
+            <p>Happy birthday, Relebohile. I hope this year is as wonderful as I want it to be for you, and then somehow even better.</p>
+
+            <p class="letter-signoff">All my love, always,<br>Your Sistaaaa 🎀💙</p>
+          </div>
+
+          <div class="card" style="margin-top:17px">
+            <span class="eyebrow">A LITTLE REMINDER</span>
+            <p>We don't have to talk every single day for you to matter to me. You have a place in my life that distance and busy days don't erase.</p>
+          </div>
+          <button class="btn ghost" data-go="timeline">READ OUR LITTLE ORBIT →</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="page-timeline" class="page">
+      <div class="desktop-window">
+        <div class="titlebar">
+          <span>FRIENDSHIP.LOG / OUR LITTLE ORBIT</span>
+          <span class="window-lights" aria-hidden="true"><i></i><i></i><i></i></span>
+        </div>
+        <div class="content">
+          <p class="eyebrow">A SMALL HISTORY OF A BIG FEELING</p>
+          <h2>OUR LITTLE ORBIT ✧</h2>
+          <p>Every friendship has its own timeline. Ours doesn't need a thousand milestones to be meaningful.</p>
+
+          <div class="timeline-list">
+            <article class="timeline-item">
+              <span class="timeline-node">01</span>
+              <div>
+                <span class="pill">THE BEGINNING</span>
+                <h3>One random hello.</h3>
+                <p>Out of all the people on the internet, two strangers crossed paths. Neither needed to know what that conversation might eventually become.</p>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <span class="timeline-node">02</span>
+              <div>
+                <span class="pill">SOMETHING CHANGED</span>
+                <h3>A friend became a bestie.</h3>
+                <p>Somewhere between getting to know each other and simply being there, this stopped feeling like an ordinary online friendship.</p>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <span class="timeline-node">03</span>
+              <div>
+                <span class="pill">THE HOME CHAPTER</span>
+                <h3>Distance didn't make it less real.</h3>
+                <p>There were still miles between you. There were still days when you didn't talk. But she had become someone you could imagine running to after a hard day.</p>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <span class="timeline-node">04</span>
+              <div>
+                <span class="pill">TODAY</span>
+                <h3>Her world gets a celebration.</h3>
+                <p>This little universe exists to celebrate Relebohile: her birthday, her favourite colours, her music, and the friendship that brought you here.</p>
+              </div>
+            </article>
+          </div>
+
+          <div class="card" style="margin-top:20px">
+            <span class="eyebrow">NEXT CHAPTER: LOADING</span>
+            <h3 style="margin-top:10px">There's still so much life left to live.</h3>
+            <p class="small">More conversations, more laughs, more ordinary days that become memories later. No need to know every chapter in advance to be glad the story is happening.</p>
+          </div>
+          <button class="btn ghost" data-go="arcade">ENTER BESTIE OS →</button>
+        </div>
+      </div>
+    </section>
+
+    
+<style>
+/* GALLERY, LETTER AND TIMELINE DETAILS */
+.gallery-grid{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:20px 0;
+}
+.photo-tile{
+  min-width:0;overflow:hidden;border:1px solid #3b4e72;
+  padding:7px;background:linear-gradient(145deg,#141f37,#080d18);
+  box-shadow:0 0 12px #287bff18;
+}
+.photo-tile button{
+  display:block;width:100%;border:0;padding:0;text-align:left;
+  color:var(--white);background:transparent;
+}
+.photo-tile img{
+  display:block;width:100%;height:155px;object-fit:cover;
+  background:#0b1630;cursor:zoom-in;
+}
+.photo-placeholder{
+  height:155px;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:9px;text-align:center;
+  background:radial-gradient(circle at 50% 40%,#18346b,#0b1020 70%);
+  color:var(--cyan);font-size:10px;letter-spacing:1px;
+}
+.photo-placeholder b{font-size:31px}
+.photo-caption{padding:10px 5px 4px;font-size:11px;line-height:1.5}
+.photo-caption small{display:block;color:var(--muted);margin-top:3px}
+.letter-paper{
+  position:relative;padding:clamp(15px,4vw,30px);
+  border:1px solid #38466a;border-radius:5px;
+  background:linear-gradient(145deg,#111a2c,#0b1020);
+  box-shadow:inset 0 0 25px #050817;
+}
+.letter-paper p{line-height:1.9;margin:0 0 18px}
+.letter-highlight{
+  display:block;padding:12px 0;color:var(--cyan);
+  font-size:clamp(22px,5vw,32px);line-height:1.35;
+  text-shadow:0 0 16px #287bff88;
+}
+.letter-signoff{color:var(--chrome);font-weight:bold}
+.timeline-list{position:relative;margin:25px 0 15px;padding-left:12px}
+.timeline-item{
+  display:grid;grid-template-columns:38px minmax(0,1fr);gap:13px;
+  position:relative;padding:0 0 28px;
+}
+.timeline-item:not(:last-child):before{
+  content:"";position:absolute;left:17px;top:32px;bottom:0;
+  width:1px;background:linear-gradient(var(--blue),var(--purple));
+}
+.timeline-node{
+  z-index:1;width:36px;height:36px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--blue);background:#101e3b;
+  color:var(--cyan);font-size:12px;box-shadow:0 0 14px #287bff33;
+}
+.timeline-item h3{margin:10px 0 5px}
+.timeline-item p{font-size:13px;margin:0;color:#bdcbe2}
+/* BESTIE OS */
+.quiz-option{
+  display:block;width:100%;text-align:left;margin:8px 0;padding:12px;
+  color:var(--white);background:#0b1427;border:1px solid #354767;
+  border-radius:5px;font-size:12px;
+}
+.quiz-option:hover{border-color:var(--cyan);background:#132444}
+.feedback{
+  margin-top:12px;padding:13px;border:1px solid #2e557d;
+  border-radius:6px;background:#0a1a2e;color:var(--cyan);
+  font-size:13px;line-height:1.7;
+}
+.wish-display{
+  padding:22px 15px;min-height:135px;display:flex;align-items:center;
+  justify-content:center;text-align:center;
+  border:1px solid #4b3c79;border-radius:8px;
+  background:radial-gradient(ellipse at 50% 0%,#382052,#10142b 75%);
+  font-size:clamp(16px,4vw,22px);line-height:1.6;color:#e2ddff;
+}
+.secret-box{
+  margin-top:16px;padding:20px 14px;text-align:center;
+  border:1px dashed #7256ab;border-radius:8px;
+  background:linear-gradient(140deg,#12182d,#1b1031);
+}
+.secret-symbol{font-size:43px;display:block;margin:8px;animation:floatUp 3s infinite}
+/* FINALE */
+.finale-hero{
+  padding:30px 15px;text-align:center;border:1px solid #415a92;
+  border-radius:8px;background:
+    radial-gradient(ellipse at 50% 0%,#23478377,transparent 60%),
+    linear-gradient(145deg,#10172e,#0a0d18);
+}
+.finale-hero h2{color:var(--cyan);text-shadow:0 0 17px #287bff88}
+.final-message{
+  padding:18px;margin:18px 0;border-left:3px solid var(--purple);
+  background:#121126;color:#d9d9fb;line-height:1.8;
+}
+/* PERSISTENT MUSIC PLAYER */
+#playerLauncher{
+  position:fixed;z-index:60;right:13px;bottom:calc(78px + env(safe-area-inset-bottom));
+  width:58px;height:58px;border-radius:50%;
+  border:2px solid #8197bc;background:radial-gradient(circle,#1c2d50,#070b14);
+  box-shadow:0 0 18px #287bff88,0 0 32px #8b5cf644;
+  color:var(--cyan);font-size:25px;display:flex;align-items:center;justify-content:center;
+}
+#playerLauncher.playing .launcher-disc{animation:rotateCD 5s linear infinite}
+.launcher-disc{display:block}
+#playerPanel{
+  position:fixed;z-index:61;right:13px;bottom:calc(145px + env(safe-area-inset-bottom));
+  width:min(350px,calc(100vw - 26px));max-height:75dvh;overflow-y:auto;
+  padding:15px;border:1px solid #657ca8;border-radius:9px;
+  background:linear-gradient(145deg,#101b32f8,#080b16f8);
+  box-shadow:0 0 35px #287bff44,0 15px 50px #000a;
+  backdrop-filter:blur(16px);animation:enterScene .25s both;
+}
+.player-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.player-top strong{font-size:11px;letter-spacing:1.5px}
+.player-window-buttons{display:flex;gap:6px}
+.mini-control{
+  width:30px;height:28px;border:1px solid #354a70;border-radius:4px;
+  background:#0d1730;color:var(--chrome);font-size:15px;
+}
+.player-art{
+  display:flex;align-items:center;justify-content:center;
+  padding:23px 10px;gap:20px;
+}
+.player-cd{
+  position:relative;flex:0 0 auto;width:105px;height:105px;border-radius:50%;
+  background:conic-gradient(#cbd7e9,#172948,#fff,#365ea0,#9b8bc5,#192238,#cad6e8);
+  box-shadow:0 0 24px #287bff44;
+}
+.player-cd:before{
+  content:"";position:absolute;inset:22px;border-radius:50%;
+  background:radial-gradient(circle,#17233b 0 16%,#d0e2ff 17% 19%,#10162a 20%);
+  border:1px solid #9eb9dc;
+}
+.player-cd:after{
+  content:"S";position:absolute;inset:0;display:grid;place-items:center;
+  color:var(--cyan);font-size:18px;font-weight:bold;text-shadow:0 0 8px var(--blue);
+}
+#playerLauncher.playing .launcher-disc,
+#playerPanel.playing .player-cd{animation:rotateCD 5s linear infinite}
+.player-info{text-align:left;min-width:0}
+.player-info h3{font-size:15px;margin:0 0 7px;color:var(--white)}
+.player-info p{margin:0;font-size:11px;color:var(--muted);line-height:1.6}
+.visualiser{
+  display:flex;align-items:center;justify-content:center;gap:4px;
+  height:30px;margin:2px 0 12px;
+}
+.visualiser i{
+  width:4px;height:var(--bar,18px);border-radius:3px;
+  background:linear-gradient(var(--cyan),var(--blue),var(--purple));
+  transform:scaleY(.25);transform-origin:center;
+}
+#playerPanel.playing .visualiser i{animation:bars var(--speed, .6s) ease-in-out infinite alternate}
+.visualiser i:nth-child(2n){animation-delay:-.3s}
+.visualiser i:nth-child(3n){animation-delay:-.5s}
+.progress-row{display:flex;align-items:center;gap:8px;font-size:10px;color:var(--muted)}
+.progress-row input{width:100%;min-width:0;accent-color:var(--cyan)}
+.player-controls{display:flex;justify-content:center;align-items:center;gap:14px;margin:14px 0}
+.player-control{
+  display:flex;align-items:center;justify-content:center;
+  width:38px;height:38px;border:1px solid #384e73;border-radius:50%;
+  background:#111d35;color:var(--white);font-size:15px;
+}
+.player-control.main{
+  width:48px;height:48px;background:linear-gradient(145deg,#2455a1,#51357e);
+  border-color:var(--cyan);font-size:19px;
+}
+.volume-row{display:flex;align-items:center;gap:10px;font-size:11px;color:var(--muted)}
+.volume-row input{width:100%;accent-color:var(--purple)}
+.player-note{border-top:1px solid #293753;margin-top:13px;padding-top:10px;color:var(--muted);font-size:10px;line-height:1.5}
+#toast{
+  position:fixed;z-index:90;left:50%;bottom:calc(145px + env(safe-area-inset-bottom));
+  transform:translateX(-50%);width:max-content;max-width:90%;
+  padding:12px 15px;background:#111a2c;border:1px solid var(--cyan);
+  border-radius:6px;color:var(--white);font-size:12px;text-align:center;
+  box-shadow:0 0 20px #287bff44;
+}
+#lightbox{
+  position:fixed;inset:0;z-index:100;background:#03050cf5;
+  display:flex;align-items:center;justify-content:center;padding:18px;
+}
+#lightbox img{max-width:100%;max-height:78dvh;object-fit:contain;border:1px solid var(--chrome);box-shadow:0 0 25px #287bff66}
+#lightboxClose{position:absolute;top:16px;right:16px}
+.site-footer{text-align:center;padding:25px 10px;color:var(--muted);font-size:10px;line-height:1.8}
+@media(min-width:700px){
+  .launch-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .photo-tile img,.photo-placeholder{height:180px}
+}
+@media(max-width:420px){
+  #app{padding:8px}
+  .grid{grid-template-columns:1fr}
+  .gallery-grid{gap:8px}
+  .photo-tile{padding:5px}
+  .photo-tile img,.photo-placeholder{height:120px}
+  .player-art{gap:13px}
+  .player-cd{width:86px;height:86px}
+  .player-cd:before{inset:18px}
+  .topbar{font-size:9px;padding:10px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
+}
+</style>
+
+    <section id="page-arcade" class="page">
+      <div class="desktop-window">
+        <div class="titlebar">
+          <span>BESTIE_OS.exe / INTERACTIVE ZONE</span>
+          <span class="window-lights" aria-hidden="true"><i></i><i></i><i></i></span>
+        </div>
+        <div class="content">
+          <p class="eyebrow">WELCOME TO YOUR PERSONAL OPERATING SYSTEM</p>
+          <h2>BESTIE OS 💙</h2>
+          <p>Three little portals. Choose one, collect a feeling, and explore.</p>
+
+          <div class="card">
+            <span class="eyebrow">MINI GAME 001</span>
+            <h3 style="margin-top:10px">How did this whole universe begin?</h3>
+            <p class="small">A tiny friendship-history check.</p>
+            <button class="quiz-option" data-quiz="wrong">At a birthday party in person.</button>
+            <button class="quiz-option" data-quiz="right">A random meeting on Instagram.</button>
+            <button class="quiz-option" data-quiz="wrong">Through a shared school project.</button>
+            <div id="quizFeedback" class="feedback hidden" aria-live="polite"></div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="card">
+            <span class="eyebrow">WISH MACHINE v. 1.0</span>
+            <h3 style="margin-top:10px">A little wish for your next chapter ✧</h3>
+            <div id="wishDisplay" class="wish-display">May beautiful things find you, even on the most ordinary days. 💙</div>
+            <button id="wishButton" class="btn purple block" style="margin-top:12px">GENERATE ANOTHER WISH ✨</button>
+          </div>
+
+          <div class="secret-box">
+            <span id="secretSymbol" class="secret-symbol">🔐</span>
+            <p class="eyebrow">CLASSIFIED · BESTIE ACCESS ONLY</p>
+            <h3>THE SECRET FILE</h3>
+            <p class="small">A tiny message is locked inside this little corner of the universe.</p>
+            <button class="btn chrome" id="secretButton">UNLOCK THE FILE ♡</button>
+            <div id="secretContent" class="hidden">
+              <div class="divider"></div>
+              <h3 style="color:var(--cyan)">YOU HAVE A HOME IN MY HEART. 💙</h3>
+              <p>You don't need to be in the same room to matter. You don't need to speak every day to remain important. You are my Sistaaaa, and I'm so glad our paths crossed.</p>
+              <p class="small muted">FILE STATUS: PERMANENTLY SAVED ✦</p>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+          <button class="btn ghost" data-go="finale">READY FOR THE FINAL LEVEL? →</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="page-finale" class="page">
+      <div class="desktop-window">
+        <div class="titlebar">
+          <span>FINAL_LEVEL.exe / BIRTHDAY PROTOCOL</span>
+          <span class="window-lights" aria-hidden="true"><i></i><i></i><i></i></span>
+        </div>
+        <div class="content">
+          <div class="finale-hero">
+            <span class="eyebrow">SYSTEM STATUS: ONE VERY SPECIAL HUMAN</span>
+            <h2 style="margin-top:18px">THE FINAL LEVEL</h2>
+            <p>You've explored the universe. Now let's make a little birthday chaos. 🖤💜</p>
+            <div class="hero-orb" style="margin:14px auto">★</div>
+            <h2>HAPPY BIRTHDAY,<br>MY SISTAAAA.</h2>
+            <p style="color:var(--cyan)">May this next chapter be full of good things.</p>
+            <button class="btn" id="partyButton">ACTIVATE BIRTHDAY APOCALYPSE ✦</button>
+          </div>
+
+          <div id="finalMessage" class="final-message hidden">
+            <p class="eyebrow">TRANSMISSION UNLOCKED</p>
+            <h3>Among a world of strangers, I'm glad I found you.</h3>
+            <p>Never forget that you're so much more than a username on a screen. You're a person with dreams, a future, a place in people's hearts, and so many chapters left to live.</p>
+            <p>I'm cheering for you from my little corner of the world. Today and in all the ordinary days after your birthday, too. 💙</p>
+            <p><strong>Stay iconic, Sistaaaa. Your universe is cheering for you. ✦</strong></p>
+          </div>
+
+          <div class="card" style="margin-top:16px">
+            <span class="eyebrow">YOUR OFFICIAL STATUS</span>
+            <h3 style="margin-top:10px">ONE OF ONE. NO REPLACEMENTS.</h3>
+            <p class="small">No scoreboard could measure a friendship. But if we were keeping one, you would have unlimited bestie points.</p>
+          </div>
+          <button class="btn ghost" data-go="home" style="margin-top:14px">↶ RETURN TO DESKTOP</button>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <div class="footer">
-    MADE WITH LOVE, SPARKLES & AN EXTREMELY QUESTIONABLE AMOUNT OF CSS ♡
-    <div class="stickerrow"><span>🎀</span><span>💿</span><span>🦋</span><span>💗</span><span>✨</span></div>
-    END OF FILE · BUT NEVER THE END OF THE LOVE
+  <footer class="site-footer">
+    <div>✦ SISTAAAA.EXE · BUILT WITH A WHOLE LOT OF LOVE ✦</div>
+    <div>Y2K SOUL · MIDNIGHT BLUE · CYBERFAIRY ENERGY</div>
+    <div>MADE FOR RELEBOHILE, FROM HER SISTAAAA 💙</div>
+  </footer>
+</div>
+
+<button id="playerLauncher" class="hidden" aria-label="Open SISTAAAA Radio" title="Open SISTAAAA Radio">
+  <span class="launcher-disc">♫</span>
+</button>
+
+<aside id="playerPanel" class="hidden" aria-label="SISTAAAA music player">
+  <div class="player-top">
+    <strong>💿 SISTAAAA RADIO.exe</strong>
+    <div class="player-window-buttons">
+      <button class="mini-control" id="minimisePlayer" aria-label="Minimise player" title="Minimise">−</button>
+      <button class="mini-control" id="closePlayer" aria-label="Close player" title="Hide player">×</button>
+    </div>
   </div>
-</div>
 
-<div class="taskbar">
-  <span>✿ SISTAAAA.EXE</span>
-  <button class="taskbtn" id="homeBtn">⌂ HOME</button>
-  <button class="taskbtn" id="partyBtn">✧ PARTY!</button>
-  <span id="clock">♡ ONLINE</span>
-</div>
+  <div class="player-art">
+    <div class="player-cd" aria-hidden="true"></div>
+    <div class="player-info">
+      <h3 id="trackTitle">A SONG FOR YOUR UNIVERSE</h3>
+      <p id="trackSubtitle">ONE LITTLE SOUNDTRACK ♡</p>
+      <span class="pill">ROYALTY-FREE AUDIO</span>
+    </div>
+  </div>
 
-<div id="toast" class="toast hidden" role="status"></div>
+  <div class="visualiser" aria-hidden="true">
+    <i style="--bar:10px;--speed:.55s"></i>
+    <i style="--bar:22px;--speed:.72s"></i>
+    <i style="--bar:16px;--speed:.46s"></i>
+    <i style="--bar:27px;--speed:.63s"></i>
+    <i style="--bar:12px;--speed:.51s"></i>
+    <i style="--bar:24px;--speed:.78s"></i>
+    <i style="--bar:17px;--speed:.48s"></i>
+    <i style="--bar:28px;--speed:.69s"></i>
+    <i style="--bar:13px;--speed:.56s"></i>
+    <i style="--bar:21px;--speed:.44s"></i>
+    <i style="--bar:16px;--speed:.71s"></i>
+    <i style="--bar:25px;--speed:.53s"></i>
+    <i style="--bar:11px;--speed:.61s"></i>
+  </div>
 
-<div id="lightbox" class="hidden">
-  <button class="taskbtn" id="lightboxClose">✕ CLOSE</button>
-  <img id="lightboxImage" src="" alt="Expanded birthday photo">
+  <div class="progress-row">
+    <span id="timeCurrent">0:00</span>
+    <input type="range" id="trackProgress" min="0" max="100" value="0" step="0.1" aria-label="Track position">
+    <span id="timeTotal">0:00</span>
+  </div>
+
+  <div class="player-controls">
+    <button class="player-control" id="restartTrack" aria-label="Restart track" title="Restart">↺</button>
+    <button class="player-control main" id="playPause" aria-label="Play music" title="Play">▶</button>
+    <button class="player-control" id="repeatTrack" aria-label="Toggle repeat" title="Repeat">⟳</button>
+  </div>
+
+  <div class="volume-row">
+    <span aria-hidden="true">🔉</span>
+    <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="0.65" aria-label="Volume">
+    <span aria-hidden="true">🔊</span>
+  </div>
+  <p class="player-note">Music stays with you as you explore. Tap the little CD button to reopen this player. Playback begins when you press play.</p>
+</aside>
+
+<audio id="birthdayAudio" preload="metadata" loop></audio>
+
+<div id="toast" class="hidden" role="status" aria-live="polite"></div>
+<div id="lightbox" class="hidden" role="dialog" aria-modal="true" aria-label="Expanded photo">
+  <button class="btn ghost" id="lightboxClose">✕ CLOSE</button>
+  <img id="lightboxImage" src="" alt="Expanded birthday memory">
 </div>
 
 <script>
-(function(){
-"use strict";
 
-const $ = id => document.getElementById(id);
-const all = selector => document.querySelectorAll(selector);
+  
+/* =========================================================
+   SISTAAAA.EXE — CENTRAL CONFIGURATION
+   Change photo filenames and the MP3 filename here only.
+   ========================================================= */
 
-let hearts = 0;
-let toastTimer;
-let typingTimer;
-let sparkleTimer;
-let partyTimer;
+const MUSIC_CONFIG = {
+  src: "birthday-track.mp3",
+  title: "A SONG FOR YOUR UNIVERSE",
+  subtitle: "ONE LITTLE SOUNDTRACK ♡",
+  defaultVolume: 0.65,
+  repeat: true
+};
 
-const wishes = [
-  "May luck find you in every place your dreams take you. 🍀",
-  "May this year bring beautiful surprises you never saw coming. 🌷",
-  "May your dreams grow bigger and your reasons to smile multiply. ✨",
-  "May you always find people who celebrate the real you. 💗",
-  "May every new chapter bring kindness, courage, laughter and love. 🦋",
-  "May blessings find their way to you in the most unexpected ways. 🌠",
-  "May you have the confidence to chase the life you dream about. 💎",
-  "May this year be full of moments you wish you could replay forever. 🎀",
-  "May happiness meet you in ordinary little moments, too. ☁️",
-  "May you always remember how precious and irreplaceable you are. 💗",
-  "May your next trip around the sun be full of magic and possibility. ☀️",
-  "May the world surprise you with more goodness than you expected. 🌈"
+const PHOTO_ALBUM = [
+  {src:"photo-01.jpg",caption:"THE ICON ♡",note:"One of one."},
+  {src:"photo-02.jpg",caption:"SISTAAAAA!!",note:"My favourite human."},
+  {src:"photo-03.jpg",caption:"NO SKIPS ✦",note:"A certified classic."},
+  {src:"photo-04.jpg",caption:"THE MOMENT",note:"Main-character energy."},
+  {src:"photo-05.jpg",caption:"MIDNIGHT MEMORIES",note:"A little star in the dark."},
+  {src:"photo-06.jpg",caption:"BLUE HOUR 💙",note:"Made of her favourite colour."},
+  {src:"photo-07.jpg",caption:"ONE OF ONE",note:"Nobody else is you."},
+  {src:"photo-08.jpg",caption:"BIRTHDAY LEGEND",note:"Always worth celebrating."},
+  {src:"photo-09.jpg",caption:"THE RELEBOHILE FILES",note:"Another favourite frame."},
+  {src:"photo-10.jpg",caption:"COSMIC BESTIE",note:"A star in her own orbit."},
+  {src:"photo-11.jpg",caption:"PURE ICON ENERGY",note:"Simply unforgettable."},
+  {src:"photo-12.jpg",caption:"SILVER SCREEN",note:"A little chrome moment."},
+  {src:"photo-13.jpg",caption:"GIRL OF THE HOUR",note:"And every other hour."},
+  {src:"photo-14.jpg",caption:"THE BLUE ARCHIVE",note:"A blue-hued little memory."},
+  {src:"photo-15.jpg",caption:"FAVOURITE HUMAN",note:"No competition required."},
+  {src:"photo-16.jpg",caption:"A LITTLE MAGIC",note:"Just being herself."},
+  {src:"photo-17.jpg",caption:"THE CLASSIC",note:"Never out of style."},
+  {src:"photo-18.jpg",caption:"DARK FAIRY FILES",note:"A little midnight magic."},
+  {src:"photo-19.jpg",caption:"STAR MATERIAL",note:"Always has been."},
+  {src:"photo-20.jpg",caption:"THE MEMORY VAULT",note:"Another frame to treasure."},
+  {src:"photo-21.jpg",caption:"SISTAAAA ENERGY",note:"Family, even across the distance."},
+  {src:"photo-22.jpg",caption:"HOLOGRAPHIC HEART",note:"A little shine, a lot of love."},
+  {src:"photo-23.jpg",caption:"THE MAIN CHARACTER",note:"This universe is yours."},
+  {src:"photo-24.jpg",caption:"A LITTLE CONSTELLATION",note:"Another star in the collection."},
+  {src:"photo-25.jpg",caption:"THE GRAND FINALE",note:"Happy birthday, Relebohile. 💙"}
 ];
+
+/* GENERAL HELPERS */
+const $ = id => document.getElementById(id);
+const $$ = selector => Array.from(document.querySelectorAll(selector));
 
 function toast(message){
   const box = $("toast");
-  if(!box) return;
   box.textContent = message;
   box.classList.remove("hidden");
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => box.classList.add("hidden"),2600);
+  clearTimeout(toast.timer);
+  toast.timer = setTimeout(() => box.classList.add("hidden"), 2800);
 }
 
-function burst(x,y,amount){
-  const icons = ["💗","✨","♡","⭐","🦋","🎀","🌸","💿","🫧"];
-  for(let i=0;i<amount;i++){
-    const item = document.createElement("span");
-    item.className = "sparkburst";
-    item.textContent = icons[Math.floor(Math.random()*icons.length)];
-    item.style.left = (x+(Math.random()-.5)*140)+"px";
-    item.style.top = (y+(Math.random()-.5)*100)+"px";
-    item.style.animationDelay = (Math.random()*.25)+"s";
-    document.body.appendChild(item);
-    setTimeout(() => item.remove(),1300);
+function formatTime(seconds){
+  if(!Number.isFinite(seconds) || seconds < 0) return "0:00";
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return mins + ":" + String(secs).padStart(2,"0");
+}
+
+/* BOOT SEQUENCE AND PAGE NAVIGATION */
+const bootMessages = [
+  "CHECKING FRIENDSHIP CONNECTION...",
+  "LOADING BLUE-HOUR MAGIC...",
+  "CALIBRATING CYBERFAIRY FREQUENCY...",
+  "BESTIE STATUS: ABSOLUTELY ICONIC..."
+];
+let bootMessageIndex = 0;
+
+setInterval(() => {
+  if($("boot").classList.contains("hidden")) return;
+  bootMessageIndex = (bootMessageIndex + 1) % bootMessages.length;
+  $("bootMessage").textContent = bootMessages[bootMessageIndex];
+}, 1400);
+
+function showPage(name){
+  const target = $("page-" + name);
+  if(!target){
+    toast("That portal hasn't been installed yet. ✦");
+    return;
   }
-}
 
-function confetti(amount){
-  const layer = $("confetti");
-  if(!layer) return;
-  const colors = ["#ff50bc","#73e7ff","#c7a0ff","#ffe16b","#ff9dbd","#ffffff"];
-  for(let i=0;i<amount;i++){
-    const piece = document.createElement("i");
-    piece.className = "piece";
-    piece.style.setProperty("--x",Math.random()*100+"%");
-    piece.style.setProperty("--s",(5+Math.random()*8)+"px");
-    piece.style.setProperty("--c",colors[Math.floor(Math.random()*colors.length)]);
-    piece.style.setProperty("--d",(2.8+Math.random()*3.5)+"s");
-    piece.style.animationDelay=(Math.random()*.9)+"s";
-    layer.appendChild(piece);
-    setTimeout(()=>piece.remove(),7500);
-  }
-}
+  $$(".page").forEach(page => page.classList.remove("active"));
+  target.classList.add("active");
 
-function startTyping(){
-  const el = $("typed");
-  if(!el) return;
-  clearInterval(typingTimer);
-  const message = "A WHOLE UNIVERSE, JUST FOR YOU ♡";
-  let index=0;
-  el.textContent="";
-  typingTimer=setInterval(()=>{
-    el.textContent+=message.charAt(index++);
-    if(index>=message.length) clearInterval(typingTimer);
-  },75);
-}
+  $$(".navbtn").forEach(button => {
+    button.classList.toggle("active", button.dataset.go === name);
+  });
 
-function openHome(){
-  $("boot").classList.add("hidden");
-  $("home").classList.remove("hidden");
-  all("main .window").forEach(section=>section.classList.add("hidden"));
   window.scrollTo({top:0,behavior:"smooth"});
-  startTyping();
 }
 
-function showSection(id){
-  const section=$(id);
-  if(!section) return;
-  all("main .window").forEach(item=>item.classList.add("hidden"));
-  section.classList.remove("hidden");
-  section.scrollIntoView({behavior:"smooth",block:"start"});
-  const names={
-    photos:"PHOTO VAULT OPENED 📸",
-    letter:"A LITTLE LETTER JUST FOR HER 💌",
-    wishes:"WISH GENERATOR ACTIVATED ✨",
-    secret:"CLASSIFIED BESTIE FILE 🔐",
-    facts:"SCIENTIFIC BESTIE STATISTICS 🦋",
-    hearts:"HEART DELIVERY SERVER ONLINE 💗"
-  };
-  toast(names[id]||"WELCOME!");
-  burst(window.innerWidth/2,100,9);
+$("startBtn").addEventListener("click", () => {
+  $("boot").classList.add("hidden");
+  $("app").classList.remove("hidden");
+  $("playerLauncher").classList.remove("hidden");
+  toast("Welcome to your birthday universe, Relebohile. 💙");
+});
+
+document.addEventListener("click", event => {
+  const navButton = event.target.closest("[data-go]");
+  if(navButton){
+    showPage(navButton.dataset.go);
+  }
+});
+
+/* FLOATING MUSIC PLAYER */
+const audio = $("birthdayAudio");
+const player = $("playerPanel");
+const launcher = $("playerLauncher");
+const playPause = $("playPause");
+const repeatButton = $("repeatTrack");
+const progress = $("trackProgress");
+const volume = $("volumeControl");
+
+audio.src = MUSIC_CONFIG.src;
+audio.loop = MUSIC_CONFIG.repeat;
+audio.volume = MUSIC_CONFIG.defaultVolume;
+volume.value = MUSIC_CONFIG.defaultVolume;
+$("trackTitle").textContent = MUSIC_CONFIG.title;
+$("trackSubtitle").textContent = MUSIC_CONFIG.subtitle;
+
+let playerVisible = false;
+let audioContext = null;
+let analyser = null;
+let sourceNode = null;
+let visualiserFrame = null;
+let frequencyData = null;
+
+function openPlayer(){
+  player.classList.remove("hidden");
+  playerVisible = true;
 }
 
-function makeSparkles(){
-  const layer=$("sparkles");
-  const icons=["✦","✧","⋆","·","✺","♡","✩"];
-  for(let i=0;i<38;i++){
-    const star=document.createElement("span");
-    star.className="spark";
-    star.textContent=icons[Math.floor(Math.random()*icons.length)];
-    star.style.left=Math.random()*100+"%";
-    star.style.top=Math.random()*100+"%";
-    star.style.setProperty("--t",(1.5+Math.random()*3.5)+"s");
-    star.style.animationDelay=(-Math.random()*5)+"s";
-    star.style.fontSize=(8+Math.random()*15)+"px";
-    layer.appendChild(star);
+function minimisePlayer(){
+  player.classList.add("hidden");
+  playerVisible = false;
+}
+
+launcher.addEventListener("click", () => {
+  if(playerVisible) minimisePlayer();
+  else openPlayer();
+});
+
+$("openMusicFromHome").addEventListener("click", openPlayer);
+$("minimisePlayer").addEventListener("click", minimisePlayer);
+$("closePlayer").addEventListener("click", minimisePlayer);
+
+/* REAL AUDIO ANALYSIS WHEN THE BROWSER SUPPORTS IT */
+function setupAudioAnalyser(){
+  if(analyser) return Promise.resolve(true);
+
+  const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+  if(!AudioContextClass) return Promise.resolve(false);
+
+  try{
+    audioContext = new AudioContextClass();
+    analyser = audioContext.createAnalyser();
+    analyser.fftSize = 64;
+    sourceNode = audioContext.createMediaElementSource(audio);
+    sourceNode.connect(analyser);
+    analyser.connect(audioContext.destination);
+    frequencyData = new Uint8Array(analyser.frequencyBinCount);
+    return audioContext.resume().then(() => true).catch(() => false);
+  }catch(error){
+    analyser = null;
+    return Promise.resolve(false);
   }
 }
 
-function makeFloaties(){
-  const layer=$("floaties");
-  const icons=["♡","💗","✨","🦋","🎀","⭐","🫧","🌸","💿"];
-  for(let i=0;i<20;i++){
-    const item=document.createElement("span");
-    item.className="floaty";
-    item.textContent=icons[Math.floor(Math.random()*icons.length)];
-    item.style.setProperty("--x",Math.random()*100+"%");
-    item.style.setProperty("--s",(14+Math.random()*23)+"px");
-    item.style.setProperty("--d",(9+Math.random()*15)+"s");
-    item.style.setProperty("--delay",(-Math.random()*22)+"s");
-    layer.appendChild(item);
-  }
-}
+function updateVisualiser(){
+  if(!analyser || audio.paused) return;
+  analyser.getByteFrequencyData(frequencyData);
 
-function updateClock(){
-  const clock=$("clock");
-  if(!clock)return;
-  clock.textContent="♡ "+new Date().toLocaleTimeString([],{
-    hour:"2-digit",minute:"2-digit"
+  const bars = $$(".visualiser i");
+  bars.forEach((bar,index) => {
+    const value = frequencyData[index % frequencyData.length] / 255;
+    bar.style.setProperty("--scale", String(0.2 + value * 1.2));
   });
+
+  visualiserFrame = requestAnimationFrame(updateVisualiser);
 }
 
-$("enterBtn").addEventListener("click",function(){
-  openHome();
-  confetti(115);
-  burst(window.innerWidth/2,window.innerHeight/2,35);
-  toast("WELCOME TO YOUR BIRTHDAY UNIVERSE, SISTAAAA!! 💗");
-});
+async function startMusic(){
+  try{
+    await setupAudioAnalyser();
+    await audio.play();
+    player.classList.add("playing");
+    launcher.classList.add("playing");
+    playPause.textContent = "Ⅱ";
+    playPause.setAttribute("aria-label","Pause music");
 
-all("[data-open]").forEach(button=>{
-  button.addEventListener("click",()=>{
-    showSection(button.getAttribute("data-open"));
-  });
-});
-
-all("[data-close]").forEach(button=>{
-  button.addEventListener("click",()=>{
-    const section=$(button.getAttribute("data-close"));
-    if(section)section.classList.add("hidden");
-    window.scrollTo({top:0,behavior:"smooth"});
-    toast("BACK TO YOUR DESKTOP ♡");
-  });
-});
-
-$("homeBtn").addEventListener("click",()=>{
-  if(!$("home").classList.contains("hidden")){
-    all("main .window").forEach(item=>item.classList.add("hidden"));
-    window.scrollTo({top:0,behavior:"smooth"});
-  }else{
-    openHome();
-  }
-});
-
-$("wishBtn").addEventListener("click",()=>{
-  const display=$("wish");
-  let next=wishes[Math.floor(Math.random()*wishes.length)];
-  if(wishes.length>1 && next===display.textContent){
-    next=wishes[(wishes.indexOf(next)+1)%wishes.length];
-  }
-  display.animate([
-    {opacity:1,transform:"scale(1) rotate(0deg)"},
-    {opacity:0,transform:"scale(.85) rotate(-2deg)"},
-    {opacity:1,transform:"scale(1) rotate(0deg)"}
-  ],{duration:500,easing:"ease-in-out"});
-  display.textContent=next;
-  burst(window.innerWidth/2,window.innerHeight/2,12);
-});
-
-$("secretBtn").addEventListener("click",()=>{
-  const message=$("secretMessage");
-  const opening=message.classList.contains("hidden");
-  message.classList.toggle("hidden");
-  $("secretIcon").textContent=opening?"🔓":"🔐";
-  $("secretBtn").textContent=opening?"♡ LOCK THE FILE ♡":"♡ UNLOCK YOUR FILE ♡";
-  if(opening){
-    confetti(55);
-    burst(window.innerWidth/2,window.innerHeight/2,25);
-    toast("SECRET REVEALED! YOU ARE SO LOVED 💗");
-  }
-});
-
-function sendHeart(){
-  hearts++;
-  $("heartCount").textContent=String(hearts).padStart(3,"0");
-  burst(Math.random()*window.innerWidth,window.innerHeight*.45,8);
-  if(hearts===1)toast("FIRST HEART DELIVERED! 💗");
-  else if(hearts%10===0)toast(hearts+" HEARTS?! THE LOVE IS UNREAL 💗");
-  else if(hearts%5===0)toast("HEART DELIVERY STREAK! ✨");
-}
-
-$("heartBtn").addEventListener("click",sendHeart);
-
-$("heartParty").addEventListener("click",()=>{
-  confetti(100);
-  for(let i=0;i<6;i++){
-    setTimeout(()=>burst(
-      Math.random()*window.innerWidth,
-      Math.random()*window.innerHeight*.65,
-      15
-    ),i*180);
-  }
-  toast("HEART STORM ACTIVATED! 💗🌠");
-});
-
-$("partyBtn").addEventListener("click",()=>{
-  confetti(100);
-  for(let i=0;i<5;i++){
-    setTimeout(()=>burst(
-      Math.random()*window.innerWidth,
-      Math.random()*window.innerHeight*.7,
-      15
-    ),i*180);
-  }
-  toast("BIRTHDAY PARTY MODE ACTIVATED 🎉");
-});
-
-all(".photo").forEach(card=>{
-  const img=card.querySelector(".photo-img");
-  const placeholder=card.querySelector(".placeholder");
-  if(!img)return;
-
-  function revealImage(){
-    if(img.getAttribute("src") && img.getAttribute("src")!==""){
-      img.classList.remove("hidden");
-      if(placeholder)placeholder.classList.add("hidden");
-    }else{
-      img.classList.add("hidden");
-      if(placeholder)placeholder.classList.remove("hidden");
+    if(analyser){
+      $$(".visualiser i").forEach(bar => bar.style.animation = "none");
+      $$(".visualiser i").forEach(bar => bar.style.transform = "scaleY(var(--scale,.3))");
+      cancelAnimationFrame(visualiserFrame);
+      updateVisualiser();
     }
+
+    toast("Soundtrack online. 🎧💙");
+  }catch(error){
+    toast("Upload a playable MP3 named birthday-track.mp3 to your repository first.");
+  }
+}
+
+function pauseMusic(){
+  audio.pause();
+  player.classList.remove("playing");
+  launcher.classList.remove("playing");
+  playPause.textContent = "▶";
+  playPause.setAttribute("aria-label","Play music");
+  cancelAnimationFrame(visualiserFrame);
+
+  $$(".visualiser i").forEach(bar => {
+    bar.style.animation = "";
+    bar.style.transform = "";
+  });
+}
+
+playPause.addEventListener("click", () => {
+  if(audio.paused) startMusic();
+  else pauseMusic();
+});
+
+$("restartTrack").addEventListener("click", () => {
+  audio.currentTime = 0;
+  if(audio.paused) startMusic();
+  else toast("Track restarted. 💿");
+});
+
+repeatButton.addEventListener("click", () => {
+  audio.loop = !audio.loop;
+  repeatButton.style.borderColor = audio.loop ? "var(--cyan)" : "";
+  toast(audio.loop ? "Repeat mode: ON ⟳" : "Repeat mode: OFF");
+});
+
+volume.addEventListener("input", () => {
+  audio.volume = Number(volume.value);
+});
+
+audio.addEventListener("timeupdate", () => {
+  $("timeCurrent").textContent = formatTime(audio.currentTime);
+  $("timeTotal").textContent = formatTime(audio.duration);
+
+  if(Number.isFinite(audio.duration) && audio.duration > 0){
+    progress.value = String((audio.currentTime / audio.duration) * 100);
+  }
+});
+
+audio.addEventListener("loadedmetadata", () => {
+  $("timeTotal").textContent = formatTime(audio.duration);
+});
+
+progress.addEventListener("input", () => {
+  if(Number.isFinite(audio.duration) && audio.duration > 0){
+    audio.currentTime = (Number(progress.value) / 100) * audio.duration;
+  }
+});
+
+audio.addEventListener("error", () => {
+  /* Friendly fallback: the player remains usable once a track is uploaded. */
+  playPause.textContent = "▶";
+});
+
+repeatButton.style.borderColor = audio.loop ? "var(--cyan)" : "";
+
+/* PHOTO GALLERY: ALL PHOTO PATHS LIVE IN PHOTO_ALBUM ABOVE */
+function renderGallery(){
+  const gallery = $("photoGallery");
+
+  gallery.innerHTML = PHOTO_ALBUM.map((photo,index) => {
+    const number = String(index + 1).padStart(2,"0");
+
+    return `
+      <article class="photo-tile">
+        <button class="photo-open" type="button" data-photo="${index}"
+          aria-label="Open photo ${number}: ${photo.caption}">
+          <div class="photo-placeholder" data-placeholder="${index}">
+            <b>✧</b>
+            <span>PHOTO ${number}</span>
+            <span>MEMORY FRAME</span>
+          </div>
+          <img class="hidden" data-photo-image="${index}"
+            src="${photo.src}" alt="${photo.caption}" loading="lazy">
+          <div class="photo-caption">
+            <strong>${photo.caption}</strong>
+            <small>${photo.note}</small>
+          </div>
+        </button>
+      </article>
+    `;
+  }).join("");
+
+  PHOTO_ALBUM.forEach((photo,index) => {
+    const img = gallery.querySelector(`[data-photo-image="${index}"]`);
+    const placeholder = gallery.querySelector(`[data-placeholder="${index}"]`);
+
+    img.addEventListener("load", () => {
+      img.classList.remove("hidden");
+      placeholder.classList.add("hidden");
+    });
+
+    img.addEventListener("error", () => {
+      img.classList.add("hidden");
+      placeholder.classList.remove("hidden");
+    });
+  });
+}
+
+renderGallery();
+
+$("photoGallery").addEventListener("click", event => {
+  const button = event.target.closest("[data-photo]");
+  if(!button) return;
+
+  const index = Number(button.dataset.photo);
+  const img = button.querySelector("img");
+
+  if(!img || img.classList.contains("hidden") || !img.naturalWidth){
+    toast("This memory frame is waiting for its photo. 💙");
+    return;
   }
 
-  img.addEventListener("load",()=>{
-    img.classList.remove("hidden");
-    if(placeholder)placeholder.classList.add("hidden");
-  });
-
-  img.addEventListener("error",()=>{
-    img.classList.add("hidden");
-    if(placeholder)placeholder.classList.remove("hidden");
-  });
-
-  revealImage();
-
-  img.addEventListener("click",()=>{
-    if(img.classList.contains("hidden"))return;
-    $("lightboxImage").src=img.src;
-    $("lightbox").classList.remove("hidden");
-  });
+  $("lightboxImage").src = img.src;
+  $("lightboxImage").alt = img.alt;
+  $("lightbox").classList.remove("hidden");
 });
 
 function closeLightbox(){
   $("lightbox").classList.add("hidden");
-  $("lightboxImage").src="";
+  $("lightboxImage").src = "";
 }
 
 $("lightboxClose").addEventListener("click",closeLightbox);
-$("lightbox").addEventListener("click",event=>{
-  if(event.target===$("lightbox"))closeLightbox();
+$("lightbox").addEventListener("click",event => {
+  if(event.target === $("lightbox")) closeLightbox();
 });
 
-document.addEventListener("keydown",event=>{
-  if(event.key==="Escape")closeLightbox();
+document.addEventListener("keydown",event => {
+  if(event.key === "Escape"){
+    closeLightbox();
+    minimisePlayer();
+  }
 });
 
-document.addEventListener("click",event=>{
-  if(event.target.closest("button") && !$("boot").classList.contains("hidden")){
+/* FRIENDSHIP QUIZ */
+$$("[data-quiz]").forEach(button => {
+  button.addEventListener("click",() => {
+    const correct = button.dataset.quiz === "right";
+    const feedback = $("quizFeedback");
+    feedback.classList.remove("hidden");
+    feedback.textContent = correct
+      ? "CORRECT! ✦ One random Instagram meeting, and a friendship that became family. 💙"
+      : "Not this time! ✧ Think back to that random little meeting on Instagram.";
+  });
+});
+
+/* THE WISH GENERATOR */
+const wishes = [
+  "May beautiful things find you, even on the most ordinary days. 💙",
+  "May you meet opportunities that make your eyes light up.",
+  "May you always have room to grow into the person you dream of becoming.",
+  "May this year bring laughter that makes your cheeks hurt and memories worth keeping.",
+  "May the people around you see your worth and treat you with kindness.",
+  "May your favourite dreams feel a little more possible with every passing month.",
+  "May life surprise you with kindness when you least expect it.",
+  "May you get countless reasons to be proud of yourself.",
+  "May the next chapter bring you adventures that make wonderful stories later.",
+  "May your world be full of blue skies, bright ideas and lovely surprises. 💙",
+  "May you never forget that you deserve good things on ordinary days too.",
+  "May you have the courage to explore, the freedom to grow and the joy to celebrate yourself."
+];
+
+let lastWish = -1;
+
+$("wishButton").addEventListener("click",() => {
+  let nextWish = Math.floor(Math.random() * wishes.length);
+
+  if(wishes.length > 1){
+    while(nextWish === lastWish){
+      nextWish = Math.floor(Math.random() * wishes.length);
+    }
+  }
+
+  lastWish = nextWish;
+  $("wishDisplay").textContent = wishes[nextWish];
+  $("wishDisplay").animate(
+    [{opacity:.2,transform:"translateY(6px)"},{opacity:1,transform:"translateY(0)"}],
+    {duration:350,easing:"ease-out"}
+  );
+});
+
+/* SECRET FILE */
+$("secretButton").addEventListener("click",() => {
+  $("secretContent").classList.remove("hidden");
+  $("secretSymbol").textContent = "🔓";
+  $("secretButton").textContent = "FILE UNLOCKED ♡";
+  $("secretButton").disabled = true;
+  toast("Secret file unlocked. Bestie-level access granted. 💙");
+});
+
+/* BIRTHDAY APOCALYPSE */
+function celebrate(){
+  $("finalMessage").classList.remove("hidden");
+
+  const reducedMotion = window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if(reducedMotion){
+    toast("Birthday protocol activated. Happy birthday, Relebohile! 💙");
     return;
   }
-  if(event.target.closest("button"))return;
-  burst(event.clientX,event.clientY,4);
-});
 
-makeSparkles();
-makeFloaties();
+  const colours = ["#287bff","#64e7ff","#8b5cf6","#c9d5e8","#f04ddb","#ffffff"];
+  const confetti = $("confetti");
+  const hearts = $("heartParticles");
+
+  for(let i=0;i<85;i++){
+    const piece = document.createElement("span");
+    piece.className = "confetti-piece";
+    piece.style.setProperty("--x",Math.random()*100+"%");
+    piece.style.setProperty("--w",(4+Math.random()*7)+"px");
+    piece.style.setProperty("--h",(7+Math.random()*12)+"px");
+    piece.style.setProperty("--c",colours[Math.floor(Math.random()*colours.length)]);
+    piece.style.setProperty("--duration",(2.2+Math.random()*3)+"s");
+    piece.style.animationDelay=(Math.random()*.9)+"s";
+    confetti.appendChild(piece);
+    setTimeout(() => piece.remove(),6500);
+  }
+
+  for(let i=0;i<24;i++){
+    const heart = document.createElement("span");
+    heart.className = "floating-heart";
+    heart.textContent = ["💙","♡","✦","💜"][i%4];
+    heart.style.setProperty("--x",Math.random()*100+"%");
+    heart.style.setProperty("--size",(15+Math.random()*24)+"px");
+    heart.style.animationDelay=(Math.random()*.8)+"s";
+    hearts.appendChild(heart);
+    setTimeout(() => heart.remove(),3500);
+  }
+
+  toast("BIRTHDAY APOCALYPSE ACTIVATED. 💙🖤💜");
+}
+
+$("partyButton").addEventListener("click",celebrate);
+
+/* LITTLE SPACE-AGE DETAILS */
+const clock = $("liveClock");
+
+function updateClock(){
+  const now = new Date();
+  clock.textContent = [
+    String(now.getHours()).padStart(2,"0"),
+    String(now.getMinutes()).padStart(2,"0"),
+    String(now.getSeconds()).padStart(2,"0")
+  ].join(":");
+}
+
 updateClock();
-setInterval(updateClock,30000);
+setInterval(updateClock,1000);
 
+/* GENERATE AMBIENT STARS */
+(function makeStars(){
+  const sky = $("stars");
+  const reducedMotion = window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  for(let i=0;i<48;i++){
+    const star = document.createElement("span");
+    star.className = "star";
+    star.textContent = ["✦","·","✧","+"][i%4];
+    star.style.left = (Math.random()*100)+"%";
+    star.style.top = (Math.random()*100)+"%";
+    star.style.setProperty("--speed",(2+Math.random()*4)+"s");
+    star.style.animationDelay=(-Math.random()*5)+"s";
+    star.style.fontSize=(7+Math.random()*12)+"px";
+    sky.appendChild(star);
+  }
+
+  if(reducedMotion){
+    $$(".star").forEach(star => star.style.animation = "none");
+  }
 })();
+
+console.log("SISTAAAA.EXE loaded. Welcome to the universe. 💙");
 </script>
 </body>
-            </html>
+</html>
+  
