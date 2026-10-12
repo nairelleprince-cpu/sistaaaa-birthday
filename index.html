@@ -4652,7 +4652,8 @@ function startStarCatcher() {
     arena?.querySelector(".star-target")?.remove();
   };
 
-  function scheduleNextStar(delay = 160) {
+  
+  function scheduleNextStar(delay = 100) {
     if (!running) return;
 
     if (nextStarTimer !== null) {
@@ -4664,6 +4665,7 @@ function startStarCatcher() {
       spawnStar();
     }, delay);
   }
+
 
   function catchStar(event, star, wasCaught) {
     if (!running || wasCaught.value || !star.isConnected) {
@@ -4756,8 +4758,8 @@ function startStarCatcher() {
       if (!running || wasCaught.value) return;
 
       star.remove();
-      scheduleNextStar(120);
-    }, 1400);
+      scheduleNextStar(80);
+    }, 1200);
   }
 
   function finishGame() {
